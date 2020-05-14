@@ -1,0 +1,72 @@
+
+.EditJobForm {
+
+    width: 100%;
+    margin: 0 auto;
+    background-image: url('https://images.pexels.com/photos/235994/pexels-photo-235994.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    background-size: 100%;
+    background-position: center;
+    border-top: 3px solid black;
+    min-height: 100vh;
+    background-attachment: fixed;
+    
+}
+
+.EditJobForm form {
+    margin-top: 100px;
+    padding-bottom: 50px;
+}
+
+.Process {
+
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    background-color: rgba(255, 255, 255, 0.712);
+    backdrop-filter: blur(5px);
+    
+}
+
+.section {
+    display: flex;
+    flex-direction: row;
+    border: none;
+}
+
+.pair {
+    align-items: flex-start;
+    width: 50%;
+    background-color: rgba(255, 255, 255, 0.712);
+}
+
+.pair label {
+    color: black;
+    margin-bottom: 10px;
+}
+
+.pair input {
+    color: black;
+    font-weight: bolder;
+    width: 90%;
+}
+
+.pair input:focus {
+    border-bottom: 2px solid rgb(185, 50, 50);
+}
+
+.ToggleButtonsContainer {
+    display: flex;
+    width: 50%;
+    justify-content: space-evenly;
+    background-color: rgba(255, 255, 255, 0.226);
+    backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+button.AButton {
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    outline: none;
+}

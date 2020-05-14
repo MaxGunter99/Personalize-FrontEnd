@@ -1,0 +1,104 @@
+/* ADD JOB FORM */
+
+.AddJobForm {
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-image: url('https://images.pexels.com/photos/235994/pexels-photo-235994.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    background-position: center top;
+    background-size: 100%;
+    background-attachment: fixed;
+
+}
+
+.AddJobForm form {
+
+    background-color: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 10px;
+
+}
+
+.AddJobForm form label {
+
+    display: flex;
+    padding: 10px;
+    color: black;
+
+}
+
+.section {
+
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+    height: 70px;
+    padding: 20px;
+    transition: .1s;
+    margin: 10px;
+
+}
+
+.AddJobForm form .section .pair {
+    display: flex;
+    width: 50%;
+    align-items: flex-start;
+    background-color: rgba(255, 255, 255, 0.712);
+    background-attachment: blur( 5px );
+    padding: 10px;
+    transition: .1s;
+
+}
+
+.AddJobForm form input {
+
+    width: 100%;
+    margin: 0 auto;
+    color: black;
+
+}
+
+.AddJobForm form input:focus {
+
+    border-bottom: 2px solid rgb(185, 50, 50);
+
+}
+
+form div a {
+
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    background-color: black;
+    border-radius: 5px;
+    transition: .5s;
+    color: white;
+
+}
+
+form div button:hover {
+
+    color: rgb(49, 148, 49);
+    cursor: pointer;
+
+}
+
+form div a:hover {
+
+    color: rgb(185, 50, 50);
+    cursor: pointer;
+
+}

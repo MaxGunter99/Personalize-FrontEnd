@@ -1,0 +1,484 @@
+.Calendar {
+    
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-top: 3px solid black;
+    background-image: url('https://images.pexels.com/photos/2049422/pexels-photo-2049422.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    /* background-image: url('https://images.pexels.com/photos/917494/pexels-photo-917494.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'); */
+    background-size: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    min-height: 91vh;
+    align-items: center;
+    padding-top: 68px;
+    overflow: hidden;
+    
+}
+
+.HeaderMonth {
+
+    font-family: 'Lobster' , cursive;
+    margin: 0px;
+    padding: 0px;
+    color: white;
+    text-decoration: underline;
+
+}
+
+.CalendarHeader {
+
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    /* background-color: rgba(94, 94, 94, 0.295); */
+    margin: 0 auto;
+    align-items: center;
+
+}
+
+header a.AddEventButton {
+
+    transition: .3s;
+    outline: none;
+    background-color: white;
+    color: black;
+
+}
+
+header a.AddEventButton:hover {
+
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    transition: .3s;
+    cursor: pointer;
+
+}
+
+.WeekDays {
+    background-color: rgba(255, 255, 255, 0.596);
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.WeekDays h3 {
+
+    font-family: 'Lobster' , cursive;
+
+}
+
+/* MONTH */
+
+.Month {
+
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    background-color: rgba(173, 173, 173, 0.479);
+    backdrop-filter: blur( 5px );
+
+}
+
+.month {
+
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+    /* border: 1px solid black; */
+    margin: 0 auto;
+    /* background-color: black; */
+    justify-content: center;
+
+}
+
+.ind.Today {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    width: 13%;
+    transition: .2s;
+    height: 75px;
+    margin: 5px;
+
+}
+
+.ind {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 13%;
+    transition: .2s;
+    height: 75px;
+    margin: 5px;
+
+}
+
+.NoEvent {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.616);
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+    transition: .3s;
+}
+
+.NoEvent:hover {
+
+    color: white;
+    background-color: rgba(0, 0, 0, 0.445);
+    cursor: pointer;
+    transition: .3s;
+}
+
+.Event {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 219, 121, 0.808);
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+    transition: .3s;
+}
+
+.Event:hover {
+
+    cursor: pointer;
+    background-color: rgba(255, 187, 0, 0.808);
+    transition: .3s;
+
+}
+
+.CalendarHeader a {
+
+    width: 12%;
+    background-color: rgb(0, 0, 0);
+    transition: .2s;
+    color: rgb(255, 255, 255);
+    padding: 5px;
+    align-items: center;
+    text-decoration: none;
+    font-size: 15px;
+
+}
+
+.CalendarHeader a:hover {
+
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    transition: .2s;
+    cursor: pointer;
+
+}
+
+/* SINGLE EVENT MODAL */
+
+.EventModal.Active {
+
+    background-color: rgba(255, 255, 255, 0.658);
+    display: flex;
+    transition: .5s;
+    flex-direction: column;
+    opacity: 1;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 5px;
+    z-index: -1;
+    backdrop-filter: blur( 5px );
+    opacity: 1;
+
+}
+
+.EventHeader {
+
+    display: flex;
+    width: 95%;
+    margin: 0 auto;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.EventHeader h2 {
+
+    font-size: 30px;
+
+}
+
+.EventHeader h1 {
+    font-family: 'Lobster', cursive;
+    margin: 0px;
+    text-decoration: underline;
+}
+
+.EventHeader div {
+
+    display: flex;
+    width: 50%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    height: 115px;
+
+}
+
+.Category {
+    margin: 0px;
+    text-indent: 30px;
+    color: rgb(48, 48, 48);
+    font-family: 'Lobster', cursive;
+}
+
+div.RightHeader {
+
+    flex-direction: row;
+    width: 20%;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+.EventHeader div .x {
+    
+    color: red;
+    border: 2px solid red;
+    border-radius: 10px;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .5s;
+
+}
+
+.EventHeader div .x:hover {
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    background-color: red;
+    transition: .5s;
+}
+
+.EventModal .info {
+
+    width: 100%;
+    margin: 0px;
+    background-color: rgba(0, 0, 0, 0.24);
+
+}
+
+.EventModal .info h2 {
+
+    margin: 0px;
+
+}
+
+/* MULTIPLE EVENTS */
+.EventModal.Active.Multiple {
+
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: none;
+    background-color: rgba(255, 255, 255, 0);
+    overflow: scroll;
+    width: 80%;
+    margin-bottom: 95px;
+
+}
+
+.EventModal.Active.Multiple .EventContainer {
+
+    margin-bottom: 50px;
+    backdrop-filter: blur( 5px );
+    background-color: none;
+    background-color: rgba(255, 255, 255, 0.658);
+    border-radius: 5px;
+
+}
+
+.EventModal.Active.Multiple .EventHeader {
+
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.596);
+    width: 100%;
+    margin-bottom: 0px;
+    border-radius: 5px 5px 0px 0px;
+
+}
+
+.EventModal.Active.Multiple .EventHeader div {
+    padding: 5px;
+}
+
+.EventModal.Active.Multiple .EventHeader div h1 {
+    padding-left: 10px;
+}
+
+.EventModal.Active.Multiple .EventHeader div .Category {
+    text-indent: 50px;
+}
+
+.Active.Multiple .info {
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 0px;
+    background-color: rgba(0, 0, 0, 0.24);
+
+}
+
+.info h3 {
+    width: auto;
+}
+
+.info button {
+    width: 100px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.CloseEvents {
+    color: rgb(237,56,51);
+    border: 3px solid rgb(237,56,51);
+    background-color: rgba(255, 255, 255, 0.486);
+    border-radius: 10px;
+    width: 125px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    backdrop-filter: blur( 5px );
+    transition: .5s;
+    margin-right: 0px;
+}
+
+.CloseEvents:hover {
+
+    color: white;
+    background-color: rgb(237,56,51);
+    transition: .5s;
+    cursor: pointer;
+
+}
+
+/* ADD EVENT FORM */
+
+.Calendar form {
+
+    background-color: rgba(0, 0, 0, 0.658);
+    width: 75%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+}
+
+form div {
+
+    width: 100%;
+    margin: 0 auto;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+form label {
+
+    color: white;
+
+}
+
+form div div {
+
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid white;
+
+}
+
+form .date label {
+
+    height: fit-content;
+
+}
+
+form input {
+
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    color: white;
+    outline: none;
+    font-size: 20px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0);
+    transition: .5s;
+
+}
+
+form input:focus {
+
+    border-bottom: 2px solid white;
+    transition: .5s;
+    border-bottom-width: auto;
+
+}
+
+.AddEventTitle {
+
+    font-family: 'Lobster', cursive;
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: white;
+    text-decoration: underline;
+    
+}
+
+div.buttons {
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+button.Action {
+
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    border-radius: 5px;
+    transition: .5s;
+    color: white;
+
+}
+
+button.Action.x:hover {
+
+    transition: .5s;
+    background-color: rgb(209, 40, 40);
+    
+}
+
+button.Action.Check:hover {
+
+    transition: .5s;
+    background-color: rgb(37, 189, 37);
+    
+}

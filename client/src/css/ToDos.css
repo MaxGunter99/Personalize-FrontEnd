@@ -1,0 +1,10 @@
+.ToDos {
+    
+    background-color: white;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-top: 3px solid black;
+    
+}

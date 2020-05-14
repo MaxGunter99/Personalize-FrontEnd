@@ -1,0 +1,149 @@
+
+.Container {
+
+    min-height: 100vh;
+    /* background-image: url('https://images.pexels.com/photos/114820/pexels-photo-114820.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'); */
+    /* background-image: url('https://images.pexels.com/photos/383568/pexels-photo-383568.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'); */
+    /* background-image: url('https://images.pexels.com/photos/716834/pexels-photo-716834.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'); */
+    background-image: url('https://images.unsplash.com/photo-1468434453985-b1ca3b555f00?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
+    background-position: top;
+    display: flex;
+    width: 100%;
+    background-size: 100%;
+    flex-direction: column;
+    background-attachment: fixed;
+    align-items: center;
+    margin: 0 auto;
+    /* position: absolute; */
+    top: 0;
+    z-index: 2;
+    /* margin-top: 0px; */
+
+}
+
+.Clouds {
+    /* position: absolute; */
+    bottom: 0;
+    height: auto;
+    opacity: .5;
+    width: 150%;
+    z-index: 1;
+}
+
+.Container header {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 20px;
+    background-color: rgb(185, 50, 50);
+    width: 100%;
+    border-bottom: 3px solid black;
+
+}
+
+.Container h1 {
+
+    margin-bottom: 1px;
+    color: white;
+    font-family: 'Lobster', cursive;
+
+}
+
+.Container h4 {
+
+    width: fit-content;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    border-radius: 10px;
+
+}
+
+.Container h2 {
+
+    margin-top: 0px;
+    font-family: 'Lobster', cursive;
+    text-decoration: underline;
+    text-decoration-color: white;
+    margin-bottom: 1px;
+
+}
+
+.part {
+
+    background-color: rgba(255, 255, 255, 0.226);
+    backdrop-filter: blur( 4px );
+    width: 70%;
+    padding: 10px;
+    margin: 20px;
+    overflow: hidden;
+
+}
+
+.incomplete {
+
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.226);
+    backdrop-filter: blur( 4px );
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    color: black;
+
+}
+
+.Process {
+
+    width: 90%;
+    background-color: rgba(255, 255, 255, 0.37);
+    margin: 0 auto;
+
+}
+
+.Process h1 {
+
+    font-family: 'Lobster', cursive;
+    text-decoration: underline;
+    text-decoration-color: rgb(185, 50, 50);
+
+}
+
+.BottomButtons {
+
+    display: flex;
+    width: 50%;
+    justify-content: space-evenly;
+    background-color: rgba(255, 255, 255, 0.226);
+    backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    margin: 50px;
+    /* border: 3px solid rgb(0, 0, 0); */
+
+}
+
+.AButton {
+
+    color: black;
+    background-color: rgba(255, 0, 0, 0);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 15px;
+
+}
+
+.AButton p {
+    width: auto;
+    text-decoration: none;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.AButton:hover {
+    color: rgb(185, 50, 50);
+    transition: .3s;
+    cursor: pointer;
+}

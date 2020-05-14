@@ -1,0 +1,494 @@
+.Jobs {
+
+    /* background-color: rgb(255, 255, 255); */
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    border-top: 3px solid black;
+    background-size: 100%;
+    padding-top: 57px;
+    background-color: rgb(0, 0, 0);
+
+}
+
+.Statistics {
+
+    display: flex;
+    width: 90%;
+    justify-content: space-evenly;
+
+}
+
+/* JOBS ADDED */
+
+.ToggleMessageActive {
+
+    transition: .5s;
+    color: white;
+    background-color: rgb(250, 181, 32);
+    height: 50px;
+    margin: 0 auto;
+
+}
+
+.ToggleMessageInactive {
+
+    transition: .5s;
+    color: rgba(0, 0, 0, 0);
+    height: 0px;
+    background-color: rgba(46, 145, 170, 0);
+    height: 50px;
+    margin: 0 auto;
+
+}
+
+a.updateActive {
+
+    display: flex;
+    justify-content: center;
+    transition: .5s;
+    width: 25%;
+    background-color: rgb(250, 181, 32);
+    border: none;
+    margin: 0 auto;
+    padding: 0px;
+    margin-top: 10px;
+    height: 25px;
+    color: white;
+    font-size: 17px;
+    outline: none;
+    text-decoration: none;
+    border-radius: 5px;
+
+}
+
+a.updateInactive {
+
+    display: flex;
+    justify-content: center;
+    transition: .5s;
+    width: 25%;
+    color: rgba(0, 0, 0, 0);
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    margin: 0 auto;
+    margin-bottom: 10px;
+    height: 25px;
+    font-size: 17px;
+    outline: none;
+    text-decoration: none;
+    border-radius: 5px;
+
+}
+
+div.JobContainer {
+
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: rgb(0, 0, 0);
+    padding: 10px;
+    border-radius: 10px;
+    /* background: url('https://images.unsplash.com/photo-1476842634003-7dcca8f832de?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'); */
+    /* background: url( 'https://images.unsplash.com/photo-1545612700-748b9ff50b3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80' ); */
+    /* background-image: url('https://images.unsplash.com/photo-1544926485-f079cef40f9d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=869&q=80');
+    background-attachment: fixed;
+    background-position: center;
+    background-size: 100%; */
+    border: 2px solid white;
+    
+}
+
+.JobContainer h1 {
+    font-size: 40px;
+    text-decoration: underline;
+    font-family: 'Lobster', cursive;
+}
+
+
+.Job .Header{
+
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    align-items: center;
+    height: 50px;
+
+}
+
+.CompanyName {
+
+    font-size: 20px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    text-decoration: underline;
+    color: white;
+    text-decoration-color: rgb(185, 50, 50);
+
+}
+
+.Role {
+
+    font-size: 15px;
+    margin-top: 5px;
+    color: rgb(185, 50, 50);
+
+}
+
+.Applied {
+
+    display: flex;
+    font-size: 15px;
+    justify-content: baseline;
+    flex-direction: column;
+    /* margin: 0 auto; */
+    /* margin-bottom: 20px; */
+
+}
+
+.Applied p {
+
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+
+}
+
+.Applied .Date {
+
+    font-weight: bold;
+    color: white;
+
+}
+
+.Job .a {
+
+    color: white;
+    background-color: black;
+    text-decoration: none;
+    font-size: 15px;
+    height: 50px;
+    /* padding-top: 5px; */
+    /* padding-bottom: 5px; */
+    /* padding-left: 10px; */
+    /* padding-right: 10px; */
+    border: 1px solid white;
+    width: 25%;
+    margin: 0 auto;
+    transition: .3s;
+    border-radius: 5px;
+
+}
+
+.Job .a:hover {
+
+    color: black;
+    background-color: white;
+    transition: .3s;
+
+}
+
+.indView {
+
+    width: 95%;
+    margin: 0 auto;
+    /* margin-top: 20px; */
+    margin-bottom: 20px;
+    background-color: rgb(0, 0, 0);
+    /* border: 2px solid white; */
+    padding: 10px;
+    color: white;
+    display: flex;
+    border-radius: 10px;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.individual .JobContainer {
+    background-color: rgb(0, 0, 0);
+    border: none;
+}
+
+.individual {
+    padding: 10px;
+    border-radius: 10px;
+
+}
+
+/* STATS CHART */
+
+.Stats {
+
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    /* border-bottom: 3px solid rgba(255, 255, 255, 0.521); */
+    /* background: url('https://images.pexels.com/photos/2733862/pexels-photo-2733862.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'); */
+    /* background-image: url('https://images.unsplash.com/photo-1580584126903-c17d41830450?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=937&q=80'); */
+    background-image: url('https://images.unsplash.com/photo-1519705129143-43afdfe43ac7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=935&q=80');
+    /* background-image: url('https://images.unsplash.com/photo-1564073259995-5b3e73577cfa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'); */
+    background-size: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    padding: 10px;
+    /* border-radius: 10px; */
+
+}
+
+.Stats div {
+
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 10px;
+    color: white;
+
+}
+
+.Stats div p {
+
+    background-color: rgba(0, 0, 0, 0);
+    backdrop-filter: blur( 5px );
+    border: 3px solid white;
+    padding: 40px;
+
+}
+
+div.rv-xy-plot {
+
+    /* background-color: rgba(255, 255, 255, 0.452); */
+    background-color: rgba(0, 0, 0, 0.26);
+    backdrop-filter: blur( 5px );
+    margin: 0 auto;
+    height: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    /* color: black; */
+    color: white;
+    border: 1px solid white;
+
+}
+
+text.rv-xy-plot__axis__tick__text {
+
+    /* fill: rgb(0, 0, 0); */
+    fill: white;
+    
+}
+
+.ZoomControls {
+
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 auto;
+
+}
+
+.ZoomControls .Zoom {
+
+    color: rgb(255, 255, 255);
+    margin-left: 10px;
+
+}
+
+.ZoomControls .Zoom:hover {
+
+    cursor: pointer;
+
+}
+
+/* PUPPETEER JOBS */
+
+.LoadingGif {
+
+    height: 300px;
+    /* width: 300px; */
+    padding: 10px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: black;
+    border: 2px solid white;
+    border-radius: 1000px;
+
+}
+
+.LoadingGifImg {
+    width: 150%;
+    padding: 10px;
+}
+
+.PuppeteerJobs {
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: black;
+    /* overflow: hidden; */
+    transition: .1s;
+    border: 2px solid white;
+    border-radius: 10px;
+    /* background: url( 'https://images.unsplash.com/photo-1526655805340-274e69922288?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80' ); */
+    /* background-attachment: fixed;
+    background-position: center; */
+    /* background-size: 100%; */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    animation-name: expand;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+	animation-duration: 1s;
+}
+
+@keyframes expand {
+
+	0% {
+		height: 300px;
+    }
+    90% {
+		height: 3000px;
+    }
+	100% {
+		height: auto;
+    }
+    
+}
+
+.PuppeteerJobs h1 {
+    font-size: 40px;
+    animation-name: fadeIn;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+    text-decoration: underline;
+    font-family: 'Lobster', cursive;
+}
+
+.PuppeteerJob {
+    width: 30%;
+    height: auto;
+    /* max-height: 179px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    border: 1px solid white;
+    /* background-color: rgba(255, 255, 255, 0.39); */
+    /* backdrop-filter: blur( 5px ); */
+    margin: 10px;
+    padding: 5px;
+    animation-name: fadeIn;
+    animation-timing-function: ease-in;
+	animation-duration: 1s;
+}
+
+.PuppeteerJob:hover {
+    border: 1px solid rgb(185, 50, 50);
+    cursor: pointer;
+}
+
+.PuppeteerJob h2 {
+    font-size: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: white;
+    text-decoration: underline;
+    text-decoration-color: rgb(185, 50, 50);
+}
+
+.PuppeteerBottom {
+
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+
+}
+
+.PuppeteerBottom .buttons {
+    display: flex;
+    width: 25%;
+    margin-right: 10px;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.PuppeteerBottom .buttons button {
+    color: white;
+    background-color: black;
+    border: 1px solid white;
+    transition: .3s;
+    padding: 10px;
+    border-radius: 100px;
+    align-items: center;
+    text-align: center;
+    font-size: 15px;
+    outline: none;
+}
+
+.PuppeteerBottom .buttons a {
+    color: white;
+    font-size: 15px;
+    background-color: black;
+    border: 1px solid white;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px;
+    margin: 0px;
+    transition: .3s;
+    border-radius: 100px;
+    outline: none;
+}
+
+.PuppeteerBottom .buttons a:hover {
+    color: rgb(88, 185, 50);
+    background-color: white;
+}
+
+.PuppeteerBottom .buttons button:hover {
+    color: rgb(185, 50, 50);
+    cursor: pointer;
+    background-color: white;
+}
+
+.PuppeteerJob h5 {
+    color: rgb(185, 50, 50);
+    font-size: 15px;
+    text-indent: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.PuppeteerJob p {
+    padding: 10px;
+    text-indent: 10px;
+    font-size: 15px;
+    color: white;
+}
+
+@keyframes fadeIn {
+
+	0% {
+        opacity: 0;
+	}
+	100% {
+        opacity: 1;
+    }
+    
+}

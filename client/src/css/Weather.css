@@ -1,0 +1,35 @@
+
+.WeatherContainer {
+
+    height: auto;
+    display: flex;
+    align-items: baseline;
+    font-size: 20px;
+
+}
+
+.Weather {
+
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
+    color: white;
+    width: 100%;
+    margin: 0 auto;
+    transition: .5s;
+
+}
+
+.Weather div {
+
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    /* background-color: white; */
+
+}
+
+.Weather div p {
+    margin: 0px;
+}
