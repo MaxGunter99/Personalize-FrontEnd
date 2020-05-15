@@ -11,7 +11,7 @@ export const AddJob = job => dispatch => {
     console.log( job )
 
     axios
-        .post( 'http://localhost:3000/jobs/' , job )
+        .post( 'http://localhost:3001/jobs/' , job )
         .then( response => {
             console.log( 'response' , response )
             dispatch({ type: ADD_JOB_SUCCESS, payload: response.data });
@@ -32,7 +32,7 @@ export const GetAllJobs = () => dispatch => {
 
     dispatch({ type: GET_ALL_JOBS });
     axios
-        .get( 'http://localhost:3000/jobs' )
+        .get( 'http://localhost:3001/jobs' )
         .then( res => {
             dispatch({ type: GET_ALL_JOBS_SUCCESS ,  payload: res.data });
         })
@@ -52,7 +52,7 @@ export const GetOneJob = ( id ) => dispatch => {
 
     dispatch({ type: GET_ONE_JOB });
     axios
-        .get( `http://localhost:3000/jobs/${id}` )
+        .get( `http://localhost:3001/jobs/${id}` )
         .then( res => {
             console.log( 'Get One Job Success!')
             dispatch({ type: GET_ONE_JOB_SUCCESS ,  payload: res.data });
@@ -74,7 +74,7 @@ export const UpdateJob = ( id , newInfo ) => dispatch => {
     dispatch({ type: UPDATE_JOB });
     console.log( newInfo )
     axios
-        .put( `http://localhost:3000/jobs/${id}` , newInfo )
+        .put( `http://localhost:3001/jobs/${id}` , newInfo )
         .then( res => {
             console.log( res )
             dispatch({ type: UPDATE_JOB_SUCCESS , payload: res.data })
@@ -95,7 +95,7 @@ export const DeleteJob = id => dispatch => {
 
     dispatch({ type: DELETE_JOB });
     axios
-        .delete( `http://localhost:3000/jobs/${id}` )
+        .delete( `http://localhost:3001/jobs/${id}` )
         .then( res => {
             window.location.href = 'http://localhost:3001/Jobs';
             dispatch({ type: DELETE_JOB_SUCCESS, payload: res });

@@ -19,7 +19,7 @@ export default class CalendarEvent extends React.Component {
 
     componentDidMount = () => {
 
-        axios.get( 'http://localhost:3000/events' )
+        axios.get( 'http://localhost:3001/events' )
 
         .then( res => {
 

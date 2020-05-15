@@ -1,7 +1,6 @@
-import React, { Suspense , lazy } from 'react';
+import React from 'react';
 import './css/Nav.css';
 import { Route, NavLink } from 'react-router-dom';
-import Axios from 'axios';
 import FeatherIcon from 'feather-icons-react';
 
 //Imported Components

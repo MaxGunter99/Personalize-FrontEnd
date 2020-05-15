@@ -1,7 +1,13 @@
 import React from 'react';
 import '../css/Jobs.css';
 import '../../node_modules/react-vis/dist/style.css';
-import { XYPlot, LineSeries, VerticalGridLines, YAxis, XAxis } from 'react-vis';
+import { 
+    XYPlot, 
+    LineSeries, 
+    VerticalGridLines, 
+    YAxis, 
+    XAxis, 
+} from 'react-vis';
 import WOW from "wow.js";
 import Axios from 'axios';
 
@@ -33,7 +39,7 @@ export default class Stats extends React.Component {
     componentDidMount() {
 
         Axios
-            .get('http://localhost:3000/jobs')
+            .get('http://localhost:3001/jobs')
             .then(res => {
                 this.setState({ jobs: res.data })
                 this.loadStats()
@@ -63,7 +69,7 @@ export default class Stats extends React.Component {
 
             let first = curr.getDate() - curr.getDay() + i
             let day = new Date(curr.setDate(first)).toLocaleDateString()
-            this.state.data[i].x = Number(day.split('/')[1])
+            // this.state.data[i].x = Number( day.split('/')[1] )
             thisWeekDates.push( day )
 
         }
@@ -106,22 +112,29 @@ export default class Stats extends React.Component {
 
         }
 
+        let xyGraph = []
+
+        console.log( thisWeekDates )
+
         // Populates graph data with jobs applied this week
-        for (var z = 0; z < jobsAppliedThisWeek.length; z++) {
+        for (var q = 0; q < thisWeekDates.length; q++ ) {
 
-            for (var q = 0; q < this.state.data.length; q++) {
+            let count = 0;
 
-                const day = jobsAppliedThisWeek[z].split('/')
+            for ( var weekDay in jobsAppliedThisWeek ) {
 
-                if ( Number(day[1] ) === this.state.data[q].x ) {
+                const day = jobsAppliedThisWeek[ weekDay ]
 
-                    this.state.data[q].y = this.state.data[q].y + 1
-
+                if ( day === thisWeekDates[q] ) {
+                    count += 1
                 }
 
             }
 
+            xyGraph.push( { x : q , y : count } )
         }
+
+        console.log( xyGraph )
 
         this.props.handleJobs( todaysJobs , 'Day' )
         this.props.handleJobs( thisWeeksJobs , 'Week' )
@@ -131,7 +144,8 @@ export default class Stats extends React.Component {
             appliedToday: jobsAppliedToday.length,
             appliedThisWeek: jobsAppliedThisWeek.length,
             jobsAppliedThisWeek: thisWeeksJobs,
-            jobsAppliedToday: todaysJobs
+            jobsAppliedToday: todaysJobs,
+            data: xyGraph
         });
 
     }
@@ -152,13 +166,19 @@ export default class Stats extends React.Component {
                     <XYPlot
                         height = { 300 }
                         width = { 300 }
-                        stroke = 'rgb(185, 50, 50)' >
+                        xDomain={[0 , 5]} 
+                        yDomain={[0, 5 ]}
+                        stroke = 'rgb(185, 50, 50)'>
 
                         {/* <HorizontalGridLines /> */}
                         <VerticalGridLines />
                         <XAxis color = 'red' />
                         <YAxis />
-                        <LineSeries data={this.state.data} />
+                        <LineSeries
+                            style = {{ strokeWidth: 2 }}
+                            fill = 'rgb(185, 50, 50)'
+                            data={this.state.data} 
+                        />
 
                     </XYPlot>
                 </div>

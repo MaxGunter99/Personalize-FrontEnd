@@ -18,7 +18,7 @@ export default class Job extends React.Component {
     componentDidMount() {
 
         Axios
-            .get(`http://localhost:3000/jobs/${this.state.id}`)
+            .get(`http://localhost:3001/jobs/${this.state.id}`)
             .then(res => {
                 this.setState({ job: res.data })
             });
@@ -28,7 +28,7 @@ export default class Job extends React.Component {
     deleteJob = (id) => {
 
         Axios
-            .delete(`http://localhost:3000/jobs/${this.state.id}`)
+            .delete(`http://localhost:3001/jobs/${this.state.id}`)
             .then(res => {
 
                 console.log()

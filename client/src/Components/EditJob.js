@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { NavLink } from 'react-router-dom';
 import FeatherIcon from 'feather-icons-react';
 
 import '../css/EditJobForm.css';
@@ -45,7 +44,7 @@ export default class EditJob extends React.Component {
 
     componentDidMount() {
         axios
-            .get(`http://localhost:3000/jobs/${this.state.id}`)
+            .get(`http://localhost:3001/jobs/${this.state.id}`)
             .then(res => {
                 console.log(res.data)
                 this.setState({
@@ -107,7 +106,7 @@ export default class EditJob extends React.Component {
 
         event.preventDefault();
         axios
-            .put(`http://localhost:3000/jobs/${this.state.id}`, this.state.job)
+            .put(`http://localhost:3010/jobs/${this.state.id}`, this.state.job)
             .then(response => {
                 console.log('Success', response, this.state.job)
                 window.location.href = 'http://localhost:3001/Jobs';
@@ -125,20 +124,18 @@ export default class EditJob extends React.Component {
 
                 this.setState({ PhoneScreen: true })
 
-                for ( var x = 0; x < 700; x += 50 ) {
+                for ( var phoneScreenCounterPositive = 0; phoneScreenCounterPositive < 700; phoneScreenCounterPositive += 50 ) {
                     await wait( 0 )
-                    this.setState({ PhoneScreenHeight: x })
-                    // window.scrollTo(0,document.body.scrollHeight);
+                    this.setState({ PhoneScreenHeight: phoneScreenCounterPositive })
                 }
 
                 this.setState({ PhoneScreenHeight: 700 })
 
             } else if (this.state.PhoneScreen === true) {
 
-                for ( var x = 700; x > 0; x -= 50 ) {
+                for ( var phoneScreenCounterNegative = 700; phoneScreenCounterNegative > 0; phoneScreenCounterNegative -= 50 ) {
                     await wait( 0 )
-                    this.setState({ PhoneScreenHeight: x })
-                    // window.scrollTo(0,document.body.scrollHeight);
+                    this.setState({ PhoneScreenHeight: phoneScreenCounterNegative })
                 }
 
                 this.setState({ PhoneScreen: false , PhoneScreenHeight: 0 })
@@ -149,20 +146,18 @@ export default class EditJob extends React.Component {
 
                 this.setState({ OnSite: true })
 
-                for ( var x = 0; x < 600; x += 50 ) {
+                for ( var onSiteCounterPositive = 0; onSiteCounterPositive < 600; onSiteCounterPositive += 50 ) {
                     await wait( 0 )
-                    this.setState({ OnSiteHeight: x })
-                    // window.scrollTo(0,document.body.scrollHeight);
+                    this.setState({ OnSiteHeight: onSiteCounterPositive })
                 }
 
                 this.setState({ OnSiteHeight: 600 })
 
             } else if (this.state.OnSite === true) {
 
-                for ( var x = 600; x > 0; x -= 50 ) {
+                for ( var onSiteCounterNegative = 600; onSiteCounterNegative > 0; onSiteCounterNegative -= 50 ) {
                     await wait( 0 )
-                    this.setState({ OnSiteHeight: x })
-                    // window.scrollTo(0,document.body.scrollHeight);
+                    this.setState({ OnSiteHeight: onSiteCounterNegative })
                 }
 
                 this.setState({ OnSite: false , OnSiteHeight: 0 })

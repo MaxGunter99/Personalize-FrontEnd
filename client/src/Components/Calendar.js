@@ -39,7 +39,7 @@ class Home extends React.Component {
     componentDidMount() {
         console.log(`${ new Date().toLocaleTimeString().split(':')[0] }:${ new Date().toLocaleTimeString().split(':')[1] } ${ new Date().toLocaleTimeString().split(' ')[1] }`)
 
-        axios.get('http://localhost:3000/events/Month')
+        axios.get('http://localhost:3001/events/Month')
 
             .then(res => {
 
@@ -81,7 +81,6 @@ class Home extends React.Component {
     loadCalendar = () => {
 
         const thisMonthDates = [];
-        const today = 1;
 
         for (var z = 0; z < 32; z++) {
 
@@ -146,7 +145,7 @@ class Home extends React.Component {
 
             let EndCount = 6 - week.indexOf( thisMonthDates[ thisMonthDates.length - 1 ].Day.split(' ')[0] )
 
-            for ( var x = 0; x < EndCount; x++ ) {
+            for ( var count = 0; count < EndCount; count++ ) {
 
                 thisMonthDates.push({Day: '' , Event: null})
 
@@ -273,7 +272,7 @@ class Home extends React.Component {
 
         e.preventDefault();
 
-        axios.post( 'http://localhost:3000/events' , this.state.AddedEvent )
+        axios.post( 'http://localhost:3001/events' , this.state.AddedEvent )
         .then( res => {
             console.log( 'Add event Success!' , res.data )
             this.setState({ eventSlide: -3000 })
@@ -296,7 +295,7 @@ class Home extends React.Component {
     DeleteEvent = ( e , event ) => {
         
         e.preventDefault();
-        axios.delete( `http://localhost:3000/events/${event.id}` )
+        axios.delete( `http://localhost:3001/events/${event.id}` )
         .then( res => {
 
             console.log( res )

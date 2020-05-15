@@ -72,10 +72,10 @@ export default class JobForm extends React.Component {
     submitDataHandler = event => {
         event.preventDefault();
         axios
-            .post( 'http://localhost:3000/jobs/' , this.state.job )
+            .post( 'http://localhost:3001/jobs/' , this.state.job )
             .then( response => {
                 console.log( 'Success' , response )
-                window.location.href = 'http://localhost:3001/Jobs';
+                window.location.href = 'http://localhost:3000/Jobs';
             })
             .catch( error => {
                 console.log( error.message )
