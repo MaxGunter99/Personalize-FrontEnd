@@ -7,10 +7,8 @@ import FeatherIcon from 'feather-icons-react';
 import EditJob from './Components/EditJob';
 import Jobs from './Components/Jobs';
 import Job from './Components/Job';
-import Calendar from './Components/Calendar';
 import AddJobForm from './Components/AddJobForm';
 import Home from './Components/Home';
-import CalendarEvent from './Components/CalendarEvent';
 import Settings from './Components/Settings';
 // const Weather = React.lazy(() => import('./Components/Weather'));
 import Weather from './Components/Weather';
@@ -28,23 +26,23 @@ export default class App extends React.Component {
       weather: true,
 
       weatherSettings: {
-        location: true,
-        description: true,
-        temp: true,
-        feelsLike: true,
-        sunrise: true,
-        sunset: true
+        location: false,
+        description: false,
+        temp: false,
+        feelsLike: false,
+        sunrise: false,
+        sunset: false
 
       },
 
       statsDisplay: true,
 
       jobBoardIcons: {
-        LinkedIn: true,
-        Indeed: true,
-        GlassDoor: true,
-        AngelList: true,
-        email: true
+        LinkedIn: false,
+        Indeed: false,
+        GlassDoor: false,
+        AngelList: false,
+        email: false
       },
 
       editResumeButton: true,
@@ -141,7 +139,7 @@ export default class App extends React.Component {
 
             <NavLink exact to='/' ><FeatherIcon icon="home" size="30" /></NavLink>
             <NavLink exact to='/Jobs' ><FeatherIcon icon="briefcase" size="30" /></NavLink>
-            <NavLink exact to='/Schedule' ><FeatherIcon icon="calendar" size="30" /></NavLink>
+            {/* <NavLink exact to='/Schedule' ><FeatherIcon icon="calendar" size="30" /></NavLink> */}
             <NavLink exact to='/Settings' ><FeatherIcon icon="settings" size="30"/></NavLink>
 
           </div>
@@ -150,11 +148,9 @@ export default class App extends React.Component {
 
         <Route exact path='/' component={Home} />
         <Route exact path='/Jobs' component={() => ( <Jobs {...this.state} /> ) }  />
-        <Route exact path='/Schedule' component={Calendar} />
         <Route exact path='/AddJob' component={AddJobForm} />
         <Route exact path='/Job/:id' component={Job} />
         <Route exact path='/Job/Edit/:id' component={EditJob} />
-        <Route exact path='/Schedule/:id/:id/:id' component={CalendarEvent} />
         <Route exact path='/Settings' component={() => ( <Settings {...this.state} toggle = { this.toggle }/> ) } />
 
 

@@ -25,7 +25,7 @@ export default class Job extends React.Component {
 
     }
 
-    deleteJob = (id) => {
+    deleteJob = ( id ) => {
 
         Axios
             .delete(`http://localhost:3001/jobs/${this.state.id}`)

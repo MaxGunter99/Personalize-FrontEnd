@@ -1,11 +1,17 @@
 
+// Components
 import React, { Suspense } from 'react';
-import '../css/Jobs.css';
 import { NavLink } from 'react-router-dom';
 import Axios from 'axios';
 import styled from 'styled-components';
 import FeatherIcon from 'feather-icons-react';
 import Confetti from 'react-confetti';
+
+// CSS
+import '../css/Jobs.css';
+import '../css/Puppeteer.css';
+
+// Stats
 const Stats = React.lazy(() => import('./Stats'));
 
 export default class Jobs extends React.Component {
@@ -47,6 +53,7 @@ export default class Jobs extends React.Component {
             fetchingPuppeteerData: false,
 
         };
+
     };
 
     componentDidMount = () => {
@@ -60,9 +67,9 @@ export default class Jobs extends React.Component {
                 let sorted = res.data.sort( (a, b) => (a.CompanyName > b.CompanyName) ? 1 : -1 );
 
                 for ( var x in res.data ) {
-                    let cur = sorted[x].CompanyName.toLowerCase()
+                    let cur = sorted[x].CompanyName.toLowerCase();
                     if ( !bank[cur] ) {
-                        bank[cur] = cur
+                        bank[cur] = cur;
                     };
                 };
 
@@ -78,7 +85,7 @@ export default class Jobs extends React.Component {
     loadSuggestions = bank => {
 
         Axios
-            .get('http://localhost:3001/puppeteer')
+            .get( 'http://localhost:3001/puppeteer' )
             .then( results => {
 
                 let filtered = [];
@@ -99,12 +106,14 @@ export default class Jobs extends React.Component {
                     spinnerBorderRadius: 10
                 });
 
-                this.setState({ PuppeteerJobs: sorted });
+                setTimeout( () => { 
+                    this.setState({ PuppeteerJobs: sorted }); 
+                }, 500 );
 
             })
             .catch( err => {
                 console.log( 'Error getting Puppeteer data:' , err );
-            })
+            });
     };
 
     handleSearch = (e) => {
@@ -204,7 +213,15 @@ export default class Jobs extends React.Component {
 
     };
 
-    sleep = m => new Promise(r => setTimeout(r, m));
+    toggleIndeedSettings = () => {
+
+        if ( this.state.indeedSuggestionsSettings === false ) {
+            this.setState({ indeedSuggestionsSettings: true })
+        } else {
+            this.setState({ indeedSuggestionsSettings: false })
+        }
+
+    }
 
     render() {
 
@@ -302,7 +319,7 @@ export default class Jobs extends React.Component {
 
                 { this.state.PuppeteerJobs.length > 0 && this.state.search === '' ?
                     <div className='PuppeteerJobs'>
-                        <h1 style={{ width: '100%', color: 'white' }}>Indeed Suggestions</h1>
+                        <h1 style={{ width: '100%', color: 'white' }}>{ this.state.PuppeteerJobs.length } Indeed Suggestions</h1>
                         { this.state.PuppeteerJobs.map( (x) =>
                             <>
                                 {x.title.toLowerCase().includes('php') ||
@@ -312,7 +329,7 @@ export default class Jobs extends React.Component {
                                     x.company.toLowerCase() === 'revature' ||
                                     x.title.toLowerCase().includes('senior') ? null :
 
-                                    <div key = {x.description} className='PuppeteerJob' onClick={() => window.open(x.URL)}>
+                                    <div key = {x.company} className='PuppeteerJob'>
 
                                         <div>
                                             <h2><strong>{x.title}</strong></h2>

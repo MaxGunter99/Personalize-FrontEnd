@@ -42,7 +42,7 @@ export default class Stats extends React.Component {
             .get('http://localhost:3001/jobs')
             .then(res => {
                 this.setState({ jobs: res.data })
-                this.loadStats()
+                return this.loadStats()
             })
             .catch(err => { console.log('Error in stats getting jobs:', err) })
 
@@ -69,7 +69,6 @@ export default class Stats extends React.Component {
 
             let first = curr.getDate() - curr.getDay() + i
             let day = new Date(curr.setDate(first)).toLocaleDateString()
-            // this.state.data[i].x = Number( day.split('/')[1] )
             thisWeekDates.push( day )
 
         }
@@ -79,10 +78,10 @@ export default class Stats extends React.Component {
             const reply = this.state.jobs[i].ReplyRecieved
             const applied = this.state.jobs[i].DateApplied
 
-            if ( reply.toLowerCase() === 'yes' ) {
-
-                accepts.push(1)
-
+            if ( reply !== '' ) {
+                if ( reply.toLowerCase() === 'yes' ) {
+                    accepts.push(1)
+                }
             }
 
             const todayStr = new Date()
@@ -158,7 +157,8 @@ export default class Stats extends React.Component {
 
                 <div>
                     <p>Total: {this.state.jobs.length}</p>
-                    <p>{ Math.floor( this.state.replies / this.state.jobs.length * 100 ) }% replied to you. ( { this.state.replies } )</p>
+                    {/* <p>{ Math.floor( this.state.replies / this.state.jobs.length * 100 ) }% replied to you. ( { this.state.replies } )</p> */}
+                    <p>{ Math.floor( this.state.replies / this.state.jobs.length * 100 ) }% replied</p>
                 </div>
 
 
@@ -166,8 +166,8 @@ export default class Stats extends React.Component {
                     <XYPlot
                         height = { 300 }
                         width = { 300 }
-                        xDomain={[0 , 5]} 
-                        yDomain={[0, 5 ]}
+                        xDomain={ [ 0 , 5 ] } 
+                        yDomain={ [ 0 , 5 ] }
                         stroke = 'rgb(185, 50, 50)'>
 
                         {/* <HorizontalGridLines /> */}

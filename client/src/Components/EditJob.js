@@ -106,10 +106,10 @@ export default class EditJob extends React.Component {
 
         event.preventDefault();
         axios
-            .put(`http://localhost:3010/jobs/${this.state.id}`, this.state.job)
+            .put(`http://localhost:3001/jobs/${this.state.id}`, this.state.job)
             .then(response => {
                 console.log('Success', response, this.state.job)
-                window.location.href = 'http://localhost:3001/Jobs';
+                window.location.href = 'http://localhost:3000/Jobs';
             })
             .catch(error => {
                 console.log(error.message)

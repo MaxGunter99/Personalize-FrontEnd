@@ -37,8 +37,9 @@ export default class JobForm extends React.Component {
             let ApplyingTo = JSON.parse( localStorage.getItem( 'ApplyingTo' ) );
             console.log( ApplyingTo )
             this.setState({
+                ...this.state,
                 job : {
-                    ...this.state,
+                    ...this.state.job,
                     CompanyName: ApplyingTo.company,
                     AppliedThrough: ApplyingTo.jobBoard,
                     Role: ApplyingTo.title,
