@@ -263,7 +263,7 @@ export default class JobForm extends React.Component {
 
                     </div>
 
-                    <div>
+                    <div className = 'AddJobButtons'>
                         <NavLink type = 'button' to = '/Jobs' className = 'Action'><FeatherIcon icon="x" size="30" /></NavLink>
                         <button type='submit' className='Action'><FeatherIcon icon="check" size="30" /></button>
                     </div>

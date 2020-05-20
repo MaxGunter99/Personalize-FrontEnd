@@ -3,44 +3,51 @@
 
     width: 100%;
     margin: 0 auto;
-    background-image: url('https://images.pexels.com/photos/235994/pexels-photo-235994.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
-    background-size: 100%;
-    background-position: center;
-    border-top: 3px solid black;
-    min-height: 100vh;
-    background-attachment: fixed;
+    background-color: black;
+    min-height: 90vh;
     
 }
 
 .EditJobForm form {
-    margin-top: 100px;
-    padding-bottom: 50px;
+    background-color: black;
 }
 
-.Process {
+.Category {
 
     display: flex;
     flex-direction: column;
-    margin-top: 50px;
-    background-color: rgba(255, 255, 255, 0.712);
-    backdrop-filter: blur(5px);
+    justify-content: space-evenly;
+    color: white;
+    background-color: black;
+    border: 1px solid white;
+    /* padding-bottom: 10px; */
+    /* overflow: hidden; */
     
 }
 
-.section {
+.Category h1 {
+    font-family: 'Lobster', cursive;
+    color: white;
+}
+
+.Section {
+    width: 90%;
     display: flex;
     flex-direction: row;
     border: none;
+    margin: 0 auto;
+    padding: 10px;
 }
 
 .pair {
+    display: flex;
     align-items: flex-start;
+    flex-direction: column;
     width: 50%;
-    background-color: rgba(255, 255, 255, 0.712);
 }
 
 .pair label {
-    color: black;
+    color: white;
     margin-bottom: 10px;
 }
 
@@ -56,17 +63,17 @@
 
 .ToggleButtonsContainer {
     display: flex;
-    width: 50%;
+    width: 80%;
     justify-content: space-evenly;
-    background-color: rgba(255, 255, 255, 0.226);
-    backdrop-filter: blur( 4px );
+    border: 1px solid white;
     border-radius: 10px;
     margin: 0 auto;
     margin-top: 50px;
 }
 
 button.AButton {
-    background-color: rgba(255, 255, 255, 0);
+    /* background-color: rgba(255, 255, 255, 0); */
+    width: auto;
     border: none;
     outline: none;
 }

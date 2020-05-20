@@ -36,7 +36,6 @@ class Home extends React.Component {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            border-top: 3px solid black;
             background-size: 100%;
             background-position: center center;
             background-attachment: fixed;

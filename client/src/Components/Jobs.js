@@ -98,7 +98,7 @@ export default class Jobs extends React.Component {
                     };
                 };
 
-                let sorted = filtered.sort((a, b) => (a.title > b.title) ? 1 : -1);
+                // let sorted = filtered.sort((a, b) => (a.title > b.title) ? 1 : -1);
 
                 this.setState({
                     spinnerOpacity: 0,
@@ -107,7 +107,8 @@ export default class Jobs extends React.Component {
                 });
 
                 setTimeout( () => { 
-                    this.setState({ PuppeteerJobs: sorted }); 
+                    // this.setState({ PuppeteerJobs: sorted }); 
+                    this.setState({ PuppeteerJobs: filtered }); 
                 }, 500 );
 
             })
@@ -462,7 +463,7 @@ export default class Jobs extends React.Component {
 
                                 {this.state.Jobs.map((x) =>
                                     <>
-                                        {x.CompanyName.slice(0, this.state.search.length) === this.state.search ?
+                                        { x.CompanyName.slice(0, this.state.search.length) === this.state.search ?
                                             <IndividualJob key={x.id} onClick={() => window.location = `/Job/${x.id}`}>
                                                 <div className='Header' >
                                                     <div>

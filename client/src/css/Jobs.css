@@ -19,9 +19,6 @@
     min-height: 90vh;
     display: flex;
     flex-direction: column;
-    border-top: 3px solid black;
-    background-size: 100%;
-    padding-top: 57px;
     background-color: rgb(0, 0, 0);
 
 }

@@ -124,16 +124,16 @@ export default class EditJob extends React.Component {
 
                 this.setState({ PhoneScreen: true })
 
-                for ( var phoneScreenCounterPositive = 0; phoneScreenCounterPositive < 700; phoneScreenCounterPositive += 50 ) {
+                for ( var phoneScreenCounterPositive = 0; phoneScreenCounterPositive < 400; phoneScreenCounterPositive += 50 ) {
                     await wait( 0 )
                     this.setState({ PhoneScreenHeight: phoneScreenCounterPositive })
                 }
 
-                this.setState({ PhoneScreenHeight: 700 })
+                this.setState({ PhoneScreenHeight: 400 })
 
             } else if (this.state.PhoneScreen === true) {
 
-                for ( var phoneScreenCounterNegative = 700; phoneScreenCounterNegative > 0; phoneScreenCounterNegative -= 50 ) {
+                for ( var phoneScreenCounterNegative = 400; phoneScreenCounterNegative > 0; phoneScreenCounterNegative -= 50 ) {
                     await wait( 0 )
                     this.setState({ PhoneScreenHeight: phoneScreenCounterNegative })
                 }
@@ -146,16 +146,16 @@ export default class EditJob extends React.Component {
 
                 this.setState({ OnSite: true })
 
-                for ( var onSiteCounterPositive = 0; onSiteCounterPositive < 600; onSiteCounterPositive += 50 ) {
+                for ( var onSiteCounterPositive = 0; onSiteCounterPositive < 400; onSiteCounterPositive += 50 ) {
                     await wait( 0 )
                     this.setState({ OnSiteHeight: onSiteCounterPositive })
                 }
 
-                this.setState({ OnSiteHeight: 600 })
+                this.setState({ OnSiteHeight: 400 })
 
             } else if (this.state.OnSite === true) {
 
-                for ( var onSiteCounterNegative = 600; onSiteCounterNegative > 0; onSiteCounterNegative -= 50 ) {
+                for ( var onSiteCounterNegative = 400; onSiteCounterNegative > 0; onSiteCounterNegative -= 50 ) {
                     await wait( 0 )
                     this.setState({ OnSiteHeight: onSiteCounterNegative })
                 }
@@ -177,11 +177,11 @@ export default class EditJob extends React.Component {
 
                 <form onSubmit={this.submitDataHandler}>
 
-                    <div className='Process'>
+                    <div className='Category'>
 
                         <h1>Outreach</h1>
 
-                        <div className='section'>
+                        <div className='Section'>
 
                             <div className='pair'>
                                 <label>Company Name:</label>
@@ -211,7 +211,7 @@ export default class EditJob extends React.Component {
 
                         </div>
 
-                        <div className='section'>
+                        <div className='Section'>
 
                             <div className='pair'>
                                 <label>Role:</label>
@@ -241,7 +241,7 @@ export default class EditJob extends React.Component {
 
                         </div>
 
-                        <div className='section'>
+                        <div className='Section'>
 
                             <div className='pair'>
                                 <label>Reply Recieved:</label>
@@ -271,7 +271,7 @@ export default class EditJob extends React.Component {
 
                         </div>
 
-                        <div className='section'>
+                        <div className='Section'>
 
                             <div className='pair'>
 
@@ -327,11 +327,11 @@ export default class EditJob extends React.Component {
                     
                     {/* { this.state.job.PhoneScreen === 'Yes' || this.state.PhoneScreen === true ? */}
                     
-                        <div className='Process' style = {{ height: `${this.state.PhoneScreenHeight}px` , overflow: 'hidden', transition: '1s' }}>
+                        <div className='Category' style = {{ height: `${this.state.PhoneScreenHeight}px` , overflow: 'hidden', transition: '1s' }}>
 
                             <h1>Phone Screen</h1>
 
-                            <div className='section'>
+                            <div className='Section'>
 
                                 <div className='pair'>
                                     <label>Phone Screen:</label>
@@ -348,7 +348,7 @@ export default class EditJob extends React.Component {
 
                             </div>
 
-                            <div className='section'>
+                            <div className='Section'>
 
                                 <div className='pair'>
                                     <label>Scheduled Or Completed:</label>
@@ -378,7 +378,7 @@ export default class EditJob extends React.Component {
 
                             </div>
 
-                            <div className='section'>
+                            <div className='Section'>
 
                                 <div className='pair'>
                                     <label>Follow Up:</label>
@@ -408,7 +408,7 @@ export default class EditJob extends React.Component {
 
                             </div>
 
-                            <div className='section'>
+                            <div className='Section'>
 
                                 <div className='pair'>
                                     <label>Follow Up Reply:</label>
@@ -431,11 +431,11 @@ export default class EditJob extends React.Component {
 
                     {/* {this.state.job.OnSite === 'Yes' || this.state.OnSite === true ? */}
 
-                        <div className='Process' style = {{ height: `${this.state.OnSiteHeight}px` , overflow: 'hidden', transition: '1s' }}>
+                        <div className='Category' style = {{ height: `${this.state.OnSiteHeight}px` , overflow: 'hidden', transition: '1s' }}>
 
                             <h1>On Site</h1>
 
-                            <div className='section'>
+                            <div className='Section'>
 
                                 <div className='pair'>
                                     <label>On Site:</label>
@@ -465,7 +465,7 @@ export default class EditJob extends React.Component {
                             </div>
 
 
-                            <div className='section'>
+                            <div className='Section'>
 
                                 <div className='pair'>
                                     <label>Initial Compensation:</label>
@@ -495,7 +495,7 @@ export default class EditJob extends React.Component {
 
                             </div>
 
-                            <div className='section'>
+                            <div className='Section'>
 
                                 <div className='pair'>
                                     <label>Salary:</label>
