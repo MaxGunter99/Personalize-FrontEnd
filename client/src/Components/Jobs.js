@@ -9,7 +9,6 @@ import Confetti from 'react-confetti';
 
 // CSS
 import '../css/Jobs.css';
-import '../css/Puppeteer.css';
 
 // Stats
 const Stats = React.lazy(() => import('./Stats'));
@@ -21,13 +20,6 @@ export default class Jobs extends React.Component {
         this.state = {
 
             Jobs: [],
-            PuppeteerJobs: [],
-
-            spinner: Math.floor(Math.random() * 4),
-            spinnerOpacity: 1,
-            spinnerWidth: 50,
-            spinnerBorderRadius: 50,
-
             search: '',
             zoom: 20,
             statsDisplay: props.statsDisplay,
@@ -43,14 +35,11 @@ export default class Jobs extends React.Component {
 
             todaysJobsActive: props.todaysJobsActive,
             jobsAppliedToday: [],
-
             thisWeeksJobsActive: props.thisWeeksJobsActive,
             jobsAppliedThisWeek: [],
 
             onSchedule: true,
             catchUpNumber: 0,
-
-            fetchingPuppeteerData: false,
 
         };
 
@@ -74,47 +63,11 @@ export default class Jobs extends React.Component {
                 };
 
                 this.setState({ Jobs: sorted });
-                return this.loadSuggestions( bank );
 
             })
             .catch( err => {
                 console.log( 'Get Jobs Error:' , err );
             })
-    };
-
-    loadSuggestions = bank => {
-
-        Axios
-            .get( 'http://localhost:3001/puppeteer' )
-            .then( results => {
-
-                let filtered = [];
-                
-                for (var y = 0; y < results.data.length; y++ ) {
-                    for ( var x = 0; x < results.data[y].length; x++ ) {
-                        if (!bank[results.data[y][x].company.toLowerCase()]) {
-                            filtered.push(results.data[y][x])
-                        };
-                    };
-                };
-
-                // let sorted = filtered.sort((a, b) => (a.title > b.title) ? 1 : -1);
-
-                this.setState({
-                    spinnerOpacity: 0,
-                    spinnerWidth: 95,
-                    spinnerBorderRadius: 10
-                });
-
-                setTimeout( () => { 
-                    // this.setState({ PuppeteerJobs: sorted }); 
-                    this.setState({ PuppeteerJobs: filtered }); 
-                }, 500 );
-
-            })
-            .catch( err => {
-                console.log( 'Error getting Puppeteer data:' , err );
-            });
     };
 
     handleSearch = (e) => {
@@ -214,16 +167,6 @@ export default class Jobs extends React.Component {
 
     };
 
-    toggleIndeedSettings = () => {
-
-        if ( this.state.indeedSuggestionsSettings === false ) {
-            this.setState({ indeedSuggestionsSettings: true })
-        } else {
-            this.setState({ indeedSuggestionsSettings: false })
-        }
-
-    }
-
     render() {
 
         // STYLED COMPONENTS
@@ -296,9 +239,9 @@ export default class Jobs extends React.Component {
                 {this.state.onSchedule === false ? (
                     <>
                         {this.state.catchUpNumber >= 2 ? (
-                            <p style={{ color: 'rgb(185, 50, 50)' }}>You are { this.state.catchUpNumber} jobs away from your weekly goal!</p>
+                            <p className = 'CatchUpNumber'>You are { this.state.catchUpNumber} jobs away from your weekly goal!</p>
                         ) : (
-                            <p style={{ color: 'rgb(185, 50, 50)' }}>You are { this.state.catchUpNumber} job away from your weekly goal!</p>
+                            <p className = 'CatchUpNumber'>You are { this.state.catchUpNumber} job away from your weekly goal!</p>
                         )}
                     </>
                 ) : (
@@ -318,65 +261,9 @@ export default class Jobs extends React.Component {
 
                 : null}
 
-                { this.state.PuppeteerJobs.length > 0 && this.state.search === '' ?
-                    <div className='PuppeteerJobs'>
-                        <h1 style={{ width: '100%', color: 'white' }}>{ this.state.PuppeteerJobs.length } Indeed Suggestions</h1>
-                        { this.state.PuppeteerJobs.map( (x) =>
-                            <>
-                                {x.title.toLowerCase().includes('php') ||
-                                    x.title.toLowerCase().includes('.net') ||
-                                    x.title.toLowerCase().includes('lead') ||
-                                    x.title.toLowerCase().includes('angular') ||
-                                    x.company.toLowerCase() === 'revature' ||
-                                    x.title.toLowerCase().includes('senior') ? null :
-
-                                    <div key = {x.company} className='PuppeteerJob'>
-
-                                        <div>
-                                            <h2><strong>{x.title}</strong></h2>
-                                            <h5>{x.company}  ➡︎  {x.location}</h5>
-                                        </div>
-
-                                        <p>{x.description}</p>
-
-                                        <div className = 'PuppeteerBottom'>
-                                            <p>{x.jobBoard}</p>
-                                            <div className = 'buttons'>
-                                                <NavLink exact to='/AddJob' onClick = { () => ( localStorage.setItem('ApplyingTo', JSON.stringify(x) ) ) }><FeatherIcon icon="plus" /></NavLink>
-                                                <button onClick={ () => window.open(x.URL) }><FeatherIcon icon="eye" /></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
-                            </>
-                        )}
-
-                    </div>
-                :
-                    <>
-                        { this.state.search === '' ?
-
-                            <div className='LoadingGif' style={{ width: `${this.state.spinnerWidth}%`, transition: '.5s', borderRadius: `${this.state.spinnerBorderRadius}px` }}>
-                                { this.state.spinner === 0 ?
-                                    <img className='LoadingGifImg' alt = 'SpinnerLoader' style={{ opacity: this.state.spinnerOpacity, transition: '.5s' }} src={"https://cdn.dribbble.com/users/2448190/screenshots/5369677/hud.gif"} />
-                                : this.state.spinner === 1 ?
-                                    <img className='LoadingGifImg' alt = 'SpinnerLoader' style={{ opacity: this.state.spinnerOpacity, transition: '.5s' }} src={"https://i.pinimg.com/originals/c6/1c/d2/c61cd23ff606ef7b7599ccf2c8dda159.gif"} />
-                                : this.state.spinner === 2 ?
-                                    <img className='LoadingGifImg' alt = 'SpinnerLoader' style={{ opacity: this.state.spinnerOpacity, transition: '.5s' }} src={"https://i.pinimg.com/originals/f2/d9/c3/f2d9c3dbdc12351f8d32585b8cf5152b.gif"} />
-                                : this.state.spinner === 3 ?
-                                    <img className='LoadingGifImg' alt = 'SpinnerLoader' style={{ opacity: this.state.spinnerOpacity, transition: '.5s' }} src={"https://thumbs.gfycat.com/DeterminedEssentialHoki-small.gif"} />
-                                : this.state.spinner === 4 ?
-                                    <img className='LoadingGifImg' alt = 'SpinnerLoader' style={{ opacity: this.state.spinnerOpacity, transition: '.5s' }} src={"https://cdn.dribbble.com/users/31818/screenshots/2035234/dribbb.gif"} />
-                                : null}
-                            </div>
-
-                        : null}
-                    </>
-                }
-
                 <div>
 
-                    <Suspense fallback={<div> Loading... </div>}>
+                    <Suspense fallback={ <div> Loading... </div> }>
 
                         {this.state.search === '' && this.state.jobsAppliedToday.length > 0 ? (
 

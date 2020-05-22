@@ -10,8 +10,8 @@ import Job from './Components/Job';
 import AddJobForm from './Components/AddJobForm';
 import Home from './Components/Home';
 import Settings from './Components/Settings';
-// const Weather = React.lazy(() => import('./Components/Weather'));
 import Weather from './Components/Weather';
+import DiscoverScraper from './Components/DiscoverScraper';
 
 
 
@@ -140,6 +140,7 @@ export default class App extends React.Component {
             <NavLink exact to='/' ><FeatherIcon icon="home" size="30" /></NavLink>
             <NavLink exact to='/Jobs' ><FeatherIcon icon="briefcase" size="30" /></NavLink>
             {/* <NavLink exact to='/Schedule' ><FeatherIcon icon="calendar" size="30" /></NavLink> */}
+            <NavLink exact to='/Discover' ><FeatherIcon icon="chrome" size="30"/></NavLink>
             <NavLink exact to='/Settings' ><FeatherIcon icon="settings" size="30"/></NavLink>
 
           </div>
@@ -152,7 +153,7 @@ export default class App extends React.Component {
         <Route exact path='/Job/:id' component={Job} />
         <Route exact path='/Job/Edit/:id' component={EditJob} />
         <Route exact path='/Settings' component={() => ( <Settings {...this.state} toggle = { this.toggle }/> ) } />
-
+        <Route exact path='/Discover' component={ DiscoverScraper } />
 
       </div>
 

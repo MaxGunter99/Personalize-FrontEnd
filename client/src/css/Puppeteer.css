@@ -1,6 +1,17 @@
 
 /* PUPPETEER JOBS */
 
+h1 {
+    color: white;
+    font-size: 40px;
+    margin-bottom: 0px;
+    animation-name: fadeIn;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+    text-decoration: underline;
+    font-family: 'Lobster', cursive;
+}
+
 .LoadingGif {
 
     height: 300px;
@@ -20,7 +31,7 @@
 }
 
 .LoadingGifImg {
-    width: 150%;
+    width: 100%;
     padding: 10px;
 }
 
@@ -33,14 +44,9 @@
     justify-content: space-between;
     padding: 10px;
     background-color: black;
-    /* overflow: hidden; */
     transition: .5s;
     border: 2px solid white;
     border-radius: 10px;
-    /* background: url( 'https://images.unsplash.com/photo-1526655805340-274e69922288?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80' ); */
-    /* background-attachment: fixed;
-    background-position: center; */
-    /* background-size: 100%; */
     margin-top: 20px;
     margin-bottom: 20px;
     animation-name: expand;
@@ -61,15 +67,6 @@
 		height: auto;
     }
     
-}
-
-.PuppeteerJobs h1 {
-    font-size: 40px;
-    animation-name: fadeIn;
-    animation-timing-function: ease-in;
-    animation-duration: 1s;
-    text-decoration: underline;
-    font-family: 'Lobster', cursive;
 }
 
 .PuppeteerJob {
@@ -185,4 +182,133 @@
         opacity: 1;
     }
     
+}
+
+/* SEARCH SETTINGS */
+.SuggestedJobs {
+    min-height: 100vh;
+    background-color: black;
+}
+
+.SearchSettings {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.ParamSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.ParamSection h3 {
+    width: auto;
+    font-size: 15px;
+    min-height: 25px;
+}
+
+.AppliedItems {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    max-width: 300px;
+}
+
+.AppliedItems .Item {
+    background-color: rgb(248, 248, 248);
+    display: flex;
+    color: black;
+    width: fit-content;
+    height: auto;
+    margin: 5px;
+    align-items: center;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.AppliedItems .Item p {
+    background-color: rgb(248, 248, 248);
+    border: none;
+    color: black;
+    width: fit-content;
+    height: auto;
+    word-wrap: break-word;
+    margin: 5px;
+}
+
+.AppliedItems .Item svg {
+    height: 20px;
+    width: 20px;
+    margin: 5px;
+    transition: .3s;
+    border-radius: 100px;
+}
+
+.AppliedItems .Item svg:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.InputSection {
+    margin-top: 10px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.InputSection input {
+    border: none;
+    width: 80%;
+    outline: none;
+    background-color: black;
+    padding: 0px;
+    border-bottom: 1px solid black;
+    transition: .3s;
+    color: white;
+}
+
+.InputSection input:focus {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgb(185, 50, 50);
+}
+
+.InputSection button {
+    height: auto;
+    width: 20%;
+    border: none;
+    font-size: initial;
+    padding: 0px;
+    transition: .3s;
+    outline: none;
+}
+
+.InputSection button:hover {
+    background-color: white;
+    color: black;
+}
+
+.SubmitButtons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.SubmitButtons button {
+    padding: 5px;
+    margin: 5px;
+    color: white;
+    background-color: black;
+    border: 1px solid white;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.SubmitButtons button:hover {
+    color: black;
+    background-color: white;
 }
