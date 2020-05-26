@@ -14,9 +14,7 @@ export default class Settings extends Component {
                 location: props.weatherSettings.location,
                 description: props.weatherSettings.description,
                 temp: props.weatherSettings.temp,
-                feelsLike: props.weatherSettings.feelsLike,
-                sunrise: props.weatherSettings.sunrise,
-                sunset: props.weatherSettings.sunset
+                ImageURL: props.weatherSettings.ImageURL,
             
             },
 
@@ -53,17 +51,6 @@ export default class Settings extends Component {
 
                             <div className = 'Single'>
 
-                                <h3>All Weather</h3>
-                                { this.state.weather === true ? 
-                                    <FeatherIcon icon="toggle-left" size="30" color='green' onClick = { (e) => this.props.toggle( e , 'weather' , false ) }/>
-                                : 
-                                    <FeatherIcon icon="toggle-right" size="30" color='red' onClick = { (e) => this.props.toggle( e , 'weather' , true ) }/> 
-                                }
-
-                            </div>
-
-                            <div className = 'Single'>
-
                                 <h3>Location</h3>
                                 { this.state.weatherSettings.location === true ? 
                                     <FeatherIcon icon="toggle-left" size="30" color='green' onClick = { (e) => this.props.toggle( e , 'location' , false ) }/>
@@ -97,33 +84,11 @@ export default class Settings extends Component {
 
                             <div className = 'Single'>
 
-                                <h3>Feels Like</h3>
-                                { this.state.weatherSettings.feelsLike === true ? 
-                                    <FeatherIcon icon="toggle-left" size="30" color='green' onClick = { (e) => this.props.toggle( e , 'feelsLike' , false ) }/>
+                                <h3>Weather Image</h3>
+                                { this.state.weatherSettings.ImageURL === true ? 
+                                    <FeatherIcon icon="toggle-left" size="30" color='green' onClick = { (e) => this.props.toggle( e , 'ImageURL' , false ) }/>
                                 : 
-                                    <FeatherIcon icon="toggle-right" size="30" color='red' onClick = { (e) => this.props.toggle( e , 'feelsLike' , true ) }/> 
-                                }
-
-                            </div>
-
-                            <div className = 'Single'>
-
-                                <h3>Sunrise</h3>
-                                { this.state.weatherSettings.sunrise === true ? 
-                                    <FeatherIcon icon="toggle-left" size="30" color='green' onClick = { (e) => this.props.toggle( e , 'sunrise' , false ) }/>
-                                : 
-                                    <FeatherIcon icon="toggle-right" size="30" color='red' onClick = { (e) => this.props.toggle( e , 'sunrise' , true ) }/> 
-                                }
-
-                            </div>
-
-                            <div className = 'Single'>
-
-                                <h3>Sunset</h3>
-                                { this.state.weatherSettings.sunset === true ? 
-                                    <FeatherIcon icon="toggle-left" size="30" color='green' onClick = { (e) => this.props.toggle( e , 'sunset' , false ) }/>
-                                : 
-                                    <FeatherIcon icon="toggle-right" size="30" color='red' onClick = { (e) => this.props.toggle( e , 'sunset' , true ) }/> 
+                                    <FeatherIcon icon="toggle-right" size="30" color='red' onClick = { (e) => this.props.toggle( e , 'ImageURL' , true ) }/> 
                                 }
 
                             </div>
@@ -176,59 +141,59 @@ export default class Settings extends Component {
                                 }
 
                             </div>
+                            
+                        </div>
 
-                            <div className = 'JobBoardContainer'>
+                        <div className='Section'>
 
-                                <h3>Job Board Icons</h3>
+                            <h2>Job Board Icons</h2>
 
-                                <div className = 'JobBoard'>
-                                    <p>LinkedIn</p>
-                                    { this.state.jobBoardIcons.LinkedIn === true ? 
-                                        <FeatherIcon icon="check-square" size="30" color='green' onClick = { (e) => this.props.toggle( e ,'LinkedIn' , false ) }/>
-                                    : 
-                                        <FeatherIcon icon="square" size="30" color='red' onClick = { (e) => this.props.toggle( e , 'LinkedIn' , true ) }/> 
-                                    }
-
-                                </div>
-
-                                <div className = 'JobBoard'>
-                                    <p>Indeed</p>
-                                    { this.state.jobBoardIcons.Indeed === true ? 
-                                        <FeatherIcon icon="check-square" size="30" color='green' onClick = { (e) => this.props.toggle( e ,'Indeed' , false ) }/>
-                                    : 
-                                        <FeatherIcon icon="square" size="30" color='red' onClick = { (e) => this.props.toggle( e , 'Indeed' , true ) }/> 
-                                    }
-                                </div>
-
-                                <div className = 'JobBoard'>
-                                    <p>Glass Door</p>
-                                    { this.state.jobBoardIcons.GlassDoor === true ? 
-                                        <FeatherIcon icon="check-square" size="30" color='green' onClick = { (e) => this.props.toggle( e ,'GlassDoor' , false ) }/>
-                                    : 
-                                        <FeatherIcon icon="square" size="30" color='red' onClick = { (e) => this.props.toggle( e , 'GlassDoor' , true ) }/> 
-                                    }
-                                </div>
-
-                                <div className = 'JobBoard'>
-                                    <p>AngelList</p>
-                                    { this.state.jobBoardIcons.AngelList === true ? 
-                                        <FeatherIcon icon="check-square" size="30" color='green' onClick = { (e) => this.props.toggle( e ,'AngelList' , false ) }/>
-                                    : 
-                                        <FeatherIcon icon="square" size="30" color='red' onClick = { (e) => this.props.toggle( e , 'AngelList' , true ) }/> 
-                                    }
-                                </div>
-
-                                <div className = 'JobBoard'>
-                                    <p>Email</p>
-                                    { this.state.jobBoardIcons.email === true ? 
-                                        <FeatherIcon icon="check-square" size="30" color='green' onClick = { (e) => this.props.toggle( e ,'email' , false ) }/>
-                                    : 
-                                        <FeatherIcon icon="square" size="30" color='red' onClick = { (e) => this.props.toggle( e , 'email' , true ) }/> 
-                                    }
-                                </div>
+                            <div className='Single'>
+                                <p>LinkedIn</p>
+                                {this.state.jobBoardIcons.LinkedIn === true ?
+                                    <FeatherIcon icon="check-square" size="30" color='green' onClick={(e) => this.props.toggle(e, 'LinkedIn', false)} />
+                                    :
+                                    <FeatherIcon icon="square" size="30" color='red' onClick={(e) => this.props.toggle(e, 'LinkedIn', true)} />
+                                }
 
                             </div>
-                            
+
+                            <div className='Single'>
+                                <p>Indeed</p>
+                                {this.state.jobBoardIcons.Indeed === true ?
+                                    <FeatherIcon icon="check-square" size="30" color='green' onClick={(e) => this.props.toggle(e, 'Indeed', false)} />
+                                    :
+                                    <FeatherIcon icon="square" size="30" color='red' onClick={(e) => this.props.toggle(e, 'Indeed', true)} />
+                                }
+                            </div>
+
+                            <div className='Single'>
+                                <p>Glass Door</p>
+                                {this.state.jobBoardIcons.GlassDoor === true ?
+                                    <FeatherIcon icon="check-square" size="30" color='green' onClick={(e) => this.props.toggle(e, 'GlassDoor', false)} />
+                                    :
+                                    <FeatherIcon icon="square" size="30" color='red' onClick={(e) => this.props.toggle(e, 'GlassDoor', true)} />
+                                }
+                            </div>
+
+                            <div className='Single'>
+                                <p>AngelList</p>
+                                {this.state.jobBoardIcons.AngelList === true ?
+                                    <FeatherIcon icon="check-square" size="30" color='green' onClick={(e) => this.props.toggle(e, 'AngelList', false)} />
+                                    :
+                                    <FeatherIcon icon="square" size="30" color='red' onClick={(e) => this.props.toggle(e, 'AngelList', true)} />
+                                }
+                            </div>
+
+                            <div className='Single'>
+                                <p>Email</p>
+                                {this.state.jobBoardIcons.email === true ?
+                                    <FeatherIcon icon="check-square" size="30" color='green' onClick={(e) => this.props.toggle(e, 'email', false)} />
+                                    :
+                                    <FeatherIcon icon="square" size="30" color='red' onClick={(e) => this.props.toggle(e, 'email', true)} />
+                                }
+                            </div>
+
                         </div>
 
                     </div>

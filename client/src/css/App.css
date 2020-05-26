@@ -3,8 +3,23 @@ html {
 }
 
 .App {
-
     text-align: center;
     font-size: calc(10px + 2vmin);
+    background-color: black;
+    overflow: hidden;
+}
 
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    background: black; 
+}
+
+::-webkit-scrollbar-track {
+    /* border-radius: 10px; */
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(255, 255, 255); 
 }

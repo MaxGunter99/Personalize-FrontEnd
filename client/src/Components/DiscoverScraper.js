@@ -55,13 +55,13 @@ export default class Jobs extends React.Component {
     componentDidMount = () => {
 
         var bank = {}
-
+    
         Axios
             .get('http://localhost:3001/jobs')
             .then(res => {
-
+    
                 let sorted = res.data.sort((a, b) => (a.CompanyName > b.CompanyName) ? 1 : -1);
-
+    
                 for (var x in res.data) {
                     let cur = sorted[x].CompanyName.toLowerCase();
                     if (!bank[cur]) {
@@ -69,6 +69,8 @@ export default class Jobs extends React.Component {
                     };
                 };
 
+                this.setState({ Jobs: sorted });
+    
                 if ( localStorage.getItem( 'SearchFor' ) ) {
                     let current = JSON.parse( localStorage.getItem( 'SearchFor' ) )
                     console.log( current )
@@ -77,17 +79,21 @@ export default class Jobs extends React.Component {
                         SearchFor: current,
                         bank
                     });
+
+                    console.log( 'SearchUsingParams' )
+                    return this.SearchUsingParams()
+
+                } else {
+                    console.log( 'loadingSuggestions' )
+                    return this.loadSuggestions(bank);
+
                 }
-
-                this.setState({ Jobs: sorted });
-
-                console.log( this.state )
-                return this.loadSuggestions(bank);
-
+    
             })
             .catch(err => {
                 console.log('Get Jobs Error:', err);
             })
+
     };
 
     loadSuggestions = bank => {
@@ -225,7 +231,9 @@ export default class Jobs extends React.Component {
 
     SearchUsingParams = async function( event ) {
 
-        event.preventDefault();
+        if ( event ) {
+            event.preventDefault();
+        }
 
         this.setState({
             ...this.state,
@@ -259,10 +267,20 @@ export default class Jobs extends React.Component {
                     };
                 };
 
-                this.setState({
-                    ...this.state,
-                    PuppeteerJobs: filtered
-                })
+                console.log( this.state.PuppeteerJobs )
+
+                if ( filtered.length === 0 ) {
+                    this.setState({
+                        ...this.state,
+                        PuppeteerJobs: 'No Jobs'
+                    })
+                } else {
+                    this.setState({
+                        ...this.state,
+                        PuppeteerJobs: filtered
+                    })
+                }
+
             })
             .catch( err => {
                 console.log( "Error getting jobs using params:" , err )
@@ -277,7 +295,7 @@ export default class Jobs extends React.Component {
 
             <div className='Jobs'>
 
-                <nav>
+                <nav style = {{ backgroundColor: 'white' }}>
                     <div className = 'SearchSettings'>
 
                         <form className = 'ParamSection' autoComplete="off" onSubmit = { (e) => this.handleSubmit( e , 'WithAllOfTheseWords' ) }>
@@ -457,48 +475,61 @@ export default class Jobs extends React.Component {
 
                 </nav>
 
-                { this.state.PuppeteerJobs.length === 0 ? (
-                    <h1 style = {{ width: '100%' , display: 'flex', justifyContent: 'center' }}>Indeed Suggestions</h1>
-                ):(
-                    <h1 style = {{ width: '100%' , display: 'flex', justifyContent: 'center' }}>{this.state.PuppeteerJobs.length} Indeed Suggestions</h1>
-                )}
+                <h1 style = {{ width: '100%' , display: 'flex', justifyContent: 'center' }}>Indeed Suggestions</h1>
 
-                {this.state.PuppeteerJobs.length > 0 ? (
+                { this.state.PuppeteerJobs.length > 0 ? (
 
                     <div className='PuppeteerJobs'>
-                        {this.state.PuppeteerJobs.map((x) =>
-                            <>
-                                {x.title.toLowerCase().includes('php') ||
-                                    x.title.toLowerCase().includes('.net') ||
-                                    x.title.toLowerCase().includes('lead') ||
-                                    x.title.toLowerCase().includes('angular') ||
-                                    x.company.toLowerCase() === 'revature' ||
-                                    x.title.toLowerCase().includes('senior') ? null :
+                        <>
+                    
+                            { this.state.PuppeteerJobs === 'No Jobs' ? (
+                                <div className='PuppeteerBottom'>
+                                    <p style = {{ 
+                                        color: 'white', 
+                                        width: '100%', 
+                                        display: 'flex', 
+                                        justifyContent: 'center', 
+                                        alignItems: 'center' 
+                                    }}>No Jobs</p>
+                                </div>
+                            ) : (
+                                <>
+                                    {this.state.PuppeteerJobs.map((x) =>
+                                        <>
+                                            {x.title.toLowerCase().includes('php') ||
+                                                x.title.toLowerCase().includes('.net') ||
+                                                x.title.toLowerCase().includes('lead') ||
+                                                x.title.toLowerCase().includes('angular') ||
+                                                x.company.toLowerCase() === 'revature' ||
+                                                x.title.toLowerCase().includes('senior') ? null :
 
-                                    <div key={x.company} className='PuppeteerJob'>
+                                                <div key={x.company} className='PuppeteerJob'>
 
-                                        <div>
-                                            <h2><strong>{x.title}</strong></h2>
-                                            <h5>{x.company}  ➡︎  {x.location}</h5>
-                                        </div>
+                                                    <div>
+                                                        <h2><strong>{x.title}</strong></h2>
+                                                        <h5>{x.company}  ➡︎  {x.location}</h5>
+                                                    </div>
 
-                                        <p>{x.description}</p>
+                                                    <p>{x.description}</p>
 
-                                        <div className='PuppeteerBottom'>
-                                            <p>{x.jobBoard}</p>
-                                            <div className='buttons'>
-                                                <NavLink exact to='/AddJob' onClick={() => (localStorage.setItem('ApplyingTo', JSON.stringify(x)))}><FeatherIcon icon="plus" /></NavLink>
-                                                <button onClick={() => window.open(x.URL)}><FeatherIcon icon="eye" /></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
-                            </>
-                        )}
+                                                    <div className='PuppeteerBottom'>
+                                                        <p>{x.jobBoard}</p>
+                                                        <div className='buttons'>
+                                                            <NavLink exact to='/AddJob' onClick={() => (localStorage.setItem('ApplyingTo', JSON.stringify(x)))}><FeatherIcon icon="plus" /></NavLink>
+                                                            <button onClick={() => window.open(x.URL)}><FeatherIcon icon="eye" /></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </>
+                                    )}
+                                </>
+                            )}
+                        </>
 
                     </div>
 
-                ) : (
+                ):(
 
                     <div className='LoadingGif' style={{ width: `${this.state.spinnerWidth}%`, transition: '.5s', borderRadius: `${this.state.spinnerBorderRadius}px` }}>
                         {this.state.spinner === 0 ?
@@ -513,6 +544,7 @@ export default class Jobs extends React.Component {
                             <img className='LoadingGifImg' alt='SpinnerLoader' style={{ opacity: this.state.spinnerOpacity, transition: '.5s' }} src={"https://cdn.dribbble.com/users/31818/screenshots/2035234/dribbb.gif"} />
                         : null}
                     </div>
+
                 )}
 
             </div>

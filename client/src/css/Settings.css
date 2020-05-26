@@ -1,27 +1,21 @@
 .SettingsContainer {
-    background-image: url('https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
-    background-size: 100%;
-    background-attachment: fixed;
-    background-position: center;
-    min-height: 100vh;
+    background-color: black;
 }
 
 .SettingsContainer h1 {
-    padding: 100px 20px 20px 20px;
     margin: 0 auto;
     margin-top: 0px;
-    margin-bottom: 30px;
     width: fit-content;
-    backdrop-filter: blur( 4px );
     border-radius: 5px;
 }
 
 .Settings {
 
     display: flex;
-    width: 90%;
+    flex-wrap: wrap;
+    width: 100%;
     margin: 0 auto;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: flex-start;
     border-radius: 5px;
     backdrop-filter: blur( 4px );
@@ -30,25 +24,27 @@
 }
 
 .Settings .Section {
-    width: 50%;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid white;
+    margin: 10px;
+    width: 45%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    /* float: left; */
-    /* margin-top: 0px; */
-    flex: 1
+    justify-content: flex-start;
 }
 
 .Settings div .Single {
 
-    /* width: 25%; */
+    min-width: 25%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
-    background-color: rgba(255, 255, 255, 0.534);
+    justify-content: center;
+    color: white;
     border-radius: 5px;
-    padding: 10px;
+    border: 1px solid white;
+    padding: 5px;
     margin: 10px;
 
 }
@@ -57,6 +53,8 @@
 
     width: 100%;
     color: white;
+    font-family: 'Lobster' , cursive;
+    text-decoration: underline;
 
 }
 

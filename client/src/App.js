@@ -1,5 +1,4 @@
 import React from 'react';
-import './css/Nav.css';
 import { Route, NavLink } from 'react-router-dom';
 import FeatherIcon from 'feather-icons-react';
 
@@ -13,6 +12,9 @@ import Settings from './Components/Settings';
 import Weather from './Components/Weather';
 import DiscoverScraper from './Components/DiscoverScraper';
 
+// CSS
+import './css/App.css';
+import './css/Nav.css';
 
 
 export default class App extends React.Component {
@@ -29,9 +31,7 @@ export default class App extends React.Component {
         location: false,
         description: false,
         temp: false,
-        feelsLike: false,
-        sunrise: false,
-        sunset: false
+        ImageURL: false,
 
       },
 
@@ -126,20 +126,16 @@ export default class App extends React.Component {
 
   render() {
     return (
-
       <div className="App">
-
         <header className='HomePageHeader'>
 
           <h1 className='Title' >Personalize</h1>
-
-            <Weather {...this.state}/>
+          <Weather {...this.state}/>
 
           <div className='Pages'>
 
             <NavLink exact to='/' ><FeatherIcon icon="home" size="30" /></NavLink>
             <NavLink exact to='/Jobs' ><FeatherIcon icon="briefcase" size="30" /></NavLink>
-            {/* <NavLink exact to='/Schedule' ><FeatherIcon icon="calendar" size="30" /></NavLink> */}
             <NavLink exact to='/Discover' ><FeatherIcon icon="chrome" size="30"/></NavLink>
             <NavLink exact to='/Settings' ><FeatherIcon icon="settings" size="30"/></NavLink>
 
@@ -148,7 +144,7 @@ export default class App extends React.Component {
         </header>
 
         <Route exact path='/' component={Home} />
-        <Route exact path='/Jobs' component={() => ( <Jobs {...this.state} /> ) }  />
+        <Route exact path='/Jobs' component={ () => ( <Jobs {...this.state} /> ) } />
         <Route exact path='/AddJob' component={AddJobForm} />
         <Route exact path='/Job/:id' component={Job} />
         <Route exact path='/Job/Edit/:id' component={EditJob} />

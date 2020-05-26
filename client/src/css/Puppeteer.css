@@ -61,7 +61,7 @@ h1 {
 		height: 300px;
     }
     90% {
-		height: 3000px;
+		height: 500px;
     }
 	100% {
 		height: auto;
@@ -194,7 +194,6 @@ h1 {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-
 }
 
 .ParamSection {
@@ -202,11 +201,15 @@ h1 {
     flex-direction: column;
     justify-content: space-between;
     padding: 5px;
+    text-align: center;
+    border-radius: 10px;
+    margin: 5px;
+    background-color: black;
 }
 
 .ParamSection h3 {
-    width: auto;
-    font-size: 15px;
+    width: 100%;
+    font-size: 12px;
     min-height: 25px;
 }
 
@@ -237,6 +240,7 @@ h1 {
     width: fit-content;
     height: auto;
     word-wrap: break-word;
+    font-size: 12px;
     margin: 5px;
 }
 
@@ -302,13 +306,14 @@ h1 {
     padding: 5px;
     margin: 5px;
     color: white;
+    outline: none;
     background-color: black;
     border: 1px solid white;
     transition: .3s;
-    cursor: pointer;
 }
 
 .SubmitButtons button:hover {
     color: black;
+    cursor: pointer;
     background-color: white;
 }

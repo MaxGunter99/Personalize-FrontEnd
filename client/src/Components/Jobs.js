@@ -271,7 +271,7 @@ export default class Jobs extends React.Component {
 
                                 {this.state.todaysJobsActive === true && this.state.jobsAppliedToday.length > 0 ? (
 
-                                    <div className='individual'>
+                                    <div className='individual' style = {{ border: '3px solid white' }}>
 
                                         <h2>Applied Today</h2>
 
@@ -302,7 +302,7 @@ export default class Jobs extends React.Component {
 
                                 {this.state.thisWeeksJobsActive === true && this.state.jobsAppliedThisWeek.length > 0 ? (
 
-                                    <div className='individual'>
+                                    <div className='individual' style = {{ border: '3px solid white' }}>
 
                                         <h2>Applied This Week</h2>
 
