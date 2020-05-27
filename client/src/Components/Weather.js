@@ -10,12 +10,11 @@ export default class Weather extends Component {
 
         this.state = {
 
-            weather: props.weather,
-
             weatherData: {
                 location: '',
                 description: '',
                 temp: '',
+                ImageURL: '',
             },
 
             weatherSettings: {
@@ -40,10 +39,12 @@ export default class Weather extends Component {
 
                 this.setState({
                     ...this.state,
-                    location: res.data.Location,
-                    description: res.data.Description,
-                    temp: res.data.Temperature,
-                    ImageURL: res.data.ImageURL,
+                    weatherData: {
+                        location: res.data.Location,
+                        description: res.data.Description,
+                        temp: res.data.Temperature,
+                        ImageURL: res.data.ImageURL,
+                    }
 
                 });
 
@@ -58,33 +59,36 @@ export default class Weather extends Component {
 
             <>
 
-                { this.props.weather === true ?
+                { this.state.weatherData.location !== '' ||
+                  this.state.weatherData.description !== '' ||
+                  this.state.weatherData.temp !== '' ||
+                  this.state.weatherData.ImageURL !== '' ?
 
                     <div className='Weather'>
 
-                        { this.props.weatherSettings.location === true ? 
+                        {this.props.weatherSettings.location === true ?
                             <div>
-                                <p><FeatherIcon icon="map-pin" size="24" /> {this.state.location}</p>
+                                <p>{this.state.weatherData.location}</p>
                             </div>
-                        : null }
+                        : null}
 
-                        { this.props.weatherSettings.description === true ? 
+                        {this.props.weatherSettings.description === true ?
                             <div>
-                                <p>{this.state.description}</p>
+                                <p>{this.state.weatherData.description}</p>
                             </div>
-                        : null }
+                        : null}
 
-                        { this.props.weatherSettings.ImageURL === true ? 
+                        {this.props.weatherSettings.ImageURL === true ?
                             <div>
-                                <img src = { this.state.ImageURL } />
+                                <img src={this.state.weatherData.ImageURL} style = {{ height: '50px', width: '50px' }} />
                             </div>
-                        : null }
+                        : null}
 
-                        { this.props.weatherSettings.temp === true ? 
+                        {this.props.weatherSettings.temp === true ?
                             <div>
-                                <p>{this.state.temp}</p>
+                                <p>{this.state.weatherData.temp}</p>
                             </div>
-                        : null }
+                        : null}
 
                     </div>
 
@@ -94,5 +98,4 @@ export default class Weather extends Component {
 
         )
     }
-
 }

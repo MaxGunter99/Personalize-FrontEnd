@@ -167,7 +167,7 @@ export default class Stats extends React.Component {
                         height = { 300 }
                         width = { 300 }
                         xDomain={ [ 0 , 5 ] } 
-                        yDomain={ [ 0 , 5 ] }
+                        yDomain={ [ 0 , this.state.jobsAppliedThisWeek.length ] }
                         stroke = 'rgb(185, 50, 50)'>
 
                         {/* <HorizontalGridLines /> */}

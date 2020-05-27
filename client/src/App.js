@@ -25,7 +25,6 @@ export default class App extends React.Component {
     this.state = {
 
       // For settings
-      weather: true,
 
       weatherSettings: {
         location: false,
@@ -84,13 +83,9 @@ export default class App extends React.Component {
         this.setState({ thisWeeksJobsActive: bool })
       }
 
-    } else if ( item === 'weather' || item === 'statsDisplay' ) {
+    } else if ( item === 'statsDisplay' ) {
 
-      if ( item === 'weather' ) {
-        this.setState({ weather: bool })
-      } else {
-        this.setState({ statsDisplay: bool })
-      }
+      this.setState({ statsDisplay: bool })
 
     } else if ( item === 'Indeed' || item === 'LinkedIn' || item === 'GlassDoor' || item === 'AngelList' || item === 'email' ) {
 
@@ -130,6 +125,7 @@ export default class App extends React.Component {
         <header className='HomePageHeader'>
 
           <h1 className='Title' >Personalize</h1>
+
           <Weather {...this.state}/>
 
           <div className='Pages'>

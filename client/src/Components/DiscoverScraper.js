@@ -18,6 +18,7 @@ export default class Jobs extends React.Component {
             Jobs: [],
             PuppeteerJobs: [],
             bank: {},
+            searching: false,
 
             spinner: Math.floor(Math.random() * 4),
             spinnerOpacity: 1,
@@ -32,7 +33,9 @@ export default class Jobs extends React.Component {
                 WithAtLeastOneOfTheseWords: [],
                 WithNoneOfTheseWords: [],
                 WithTheseWordsInTitle: [],
-                FromThisCompany: []
+                FromThisCompany: [],
+                SalaryEstimate: '',
+                Location: ''
 
             },
 
@@ -44,7 +47,9 @@ export default class Jobs extends React.Component {
                 WithAtLeastOneOfTheseWords: '',
                 WithNoneOfTheseWords: '',
                 WithTheseWordsInTitle: '',
-                FromThisCompany: ''
+                FromThisCompany: '',
+                SalaryEstimate: '',
+                Location: ''
 
             }
 
@@ -55,6 +60,11 @@ export default class Jobs extends React.Component {
     componentDidMount = () => {
 
         var bank = {}
+
+        this.setState({
+            ...this.state,
+            searching: true
+        })
     
         Axios
             .get('http://localhost:3001/jobs')
@@ -98,6 +108,11 @@ export default class Jobs extends React.Component {
 
     loadSuggestions = bank => {
 
+        this.setState({
+            ...this.state,
+            searching: true
+        })
+
         Axios
             .get('http://localhost:3001/puppeteer')
             .then(results => {
@@ -122,7 +137,7 @@ export default class Jobs extends React.Component {
 
                 setTimeout(() => {
                     // this.setState({ PuppeteerJobs: sorted }); 
-                    this.setState({ PuppeteerJobs: filtered });
+                    this.setState({ PuppeteerJobs: filtered, searching: false });
                 }, 500);
 
             })
@@ -147,50 +162,109 @@ export default class Jobs extends React.Component {
     };
 
     handleSubmit = ( event , string ) => {
+
         event.preventDefault();
 
-        let dictionary = {};
-        for ( var x of this.state.SearchFor[ string ] ) {
-            dictionary[ x ] = x
-        };
+        console.log( event.target.name )
 
-        if ( this.state.SearchForInputs[ string ] in dictionary || this.state.SearchForInputs[ string ] === '' ) {
-            console.log( 'its already in' )
+        if ( string === 'SalaryEstimate' ) {
+
+            this.setState({
+                ...this.state,
+                SearchFor: {
+                    ...this.state.SearchFor,
+                    SalaryEstimate: this.state.SearchForInputs.SalaryEstimate
+                },
+                SearchForInputs: {
+                    ...this.state.SearchForInputs,
+                    [string]: ''
+                }
+            });
+
+        } else if ( string === 'Location' ) {
+
+            this.setState({
+                ...this.state,
+                SearchFor: {
+                    ...this.state.SearchFor,
+                    Location: this.state.SearchForInputs.Location
+                },
+                SearchForInputs: {
+                    ...this.state.SearchForInputs,
+                    [string]: ''
+                }
+            });
+
         } else {
-            this.state.SearchFor[ string ].push( this.state.SearchForInputs[ string ] )
-        };
 
-        this.setState({
-            SearchForInputs: {
-                ...this.state.SearchForInputs,
-                [string]: ''
-            }
-        });
+            let dictionary = {};
+            for ( var x of this.state.SearchFor[ string ] ) {
+                dictionary[ x ] = x
+            };
+    
+            if ( this.state.SearchForInputs[ string ] in dictionary || this.state.SearchForInputs[ string ] === '' ) {
+                console.log( 'its already in' )
+            } else {
+                this.state.SearchFor[ string ].push( this.state.SearchForInputs[ string ] )
+            };
+    
+            this.setState({
+                ...this.state,
+                SearchForInputs: {
+                    ...this.state.SearchForInputs,
+                    [string]: ''
+                }
+            });
+        }
 
-        return this.saveSearch()
+        setTimeout( () => { return this.saveSearch() }, 1 )
     }
 
     handleDeleteItem = ( event , category , item ) => {
 
         event.preventDefault();
 
-        let newArray = []
-        for( var arrayItem in this.state.SearchFor[ category ] ) {
-            let current = this.state.SearchFor[ category ][ arrayItem ]
-            if ( current !== item ) {
-                newArray.push( current )
-            }
-        };
+        if ( category === 'SalaryEstimate' ) {
+            this.setState({
+                ...this.state,
+                SearchFor: {
+                    ...this.state.SearchFor,
+                    SalaryEstimate: ''
+                }
+            })
 
-        this.setState({
-            ...this.state,
-            SearchFor: {
-                ...this.state.SearchFor,
-                [ category ]: newArray
-            }
-        });
+        } else if ( category === 'Location' ) {
+            this.setState({
+                ...this.state,
+                SearchFor: {
+                    ...this.state.SearchFor,
+                    Location: ''
+                }
+            });
 
-        return this.saveSearch()
+        } else {
+
+            let newArray = [];
+    
+            for( var arrayItem in this.state.SearchFor[ category ] ) {
+                let current = this.state.SearchFor[ category ][ arrayItem ]
+                if ( current !== item ) {
+                    newArray.push( current )
+                }
+            };
+    
+            this.setState({
+                ...this.state,
+                SearchFor: {
+                    ...this.state.SearchFor,
+                    [ category ]: newArray
+                }
+            });
+
+        }
+
+
+        setTimeout( () => { return this.saveSearch() }, 1 )
 
     }
 
@@ -207,7 +281,9 @@ export default class Jobs extends React.Component {
                 WithAtLeastOneOfTheseWords: [],
                 WithNoneOfTheseWords: [],
                 WithTheseWordsInTitle: [],
-                FromThisCompany: []
+                FromThisCompany: [],
+                SalaryEstimate: '',
+                Location: ''
 
             },
             SearchForInputs: {
@@ -217,7 +293,9 @@ export default class Jobs extends React.Component {
                 WithAtLeastOneOfTheseWords: '',
                 WithNoneOfTheseWords: '',
                 WithTheseWordsInTitle: '',
-                FromThisCompany: ''
+                FromThisCompany: '',
+                SalaryEstimate: '',
+                Location: ''
 
             }
         });
@@ -226,6 +304,7 @@ export default class Jobs extends React.Component {
     };
 
     saveSearch = () => {
+        localStorage.removeItem( 'SearchFor' )
         localStorage.setItem( 'SearchFor' , JSON.stringify( this.state.SearchFor ) )
     }
 
@@ -235,23 +314,31 @@ export default class Jobs extends React.Component {
             event.preventDefault();
         }
 
-        this.setState({
-            ...this.state,
-            spinnerOpacity: 1,
-            spinnerWidth: 50,
-            spinnerBorderRadius: 50,
-            PuppeteerJobs: []
-        });
-
         let body = {}
 
         for ( var SearchItem in this.state.SearchFor ) {
             let current = this.state.SearchFor[ SearchItem ];
 
             if ( current.length > 0 ) {
-                body[ SearchItem ] = String( current.join( ' ' ) )
+
+                if ( typeof( current ) === 'string' ) {
+                    body[ SearchItem ] = current
+                } else {
+                    body[ SearchItem ] = String( current.join( ',' ) )
+                }
             }
         }
+
+        this.setState({
+            ...this.state,
+            spinnerOpacity: 1,
+            spinnerWidth: 50,
+            spinnerBorderRadius: 50,
+            PuppeteerJobs: [],
+            searching: true
+        });
+
+        console.log( 'Sending:' , body )
 
         Axios
             .post( 'http://localhost:3001/puppeteer' , body )
@@ -272,18 +359,20 @@ export default class Jobs extends React.Component {
                 if ( filtered.length === 0 ) {
                     this.setState({
                         ...this.state,
-                        PuppeteerJobs: 'No Jobs'
+                        PuppeteerJobs: 'No Jobs', 
+                        searching: false
                     })
                 } else {
                     this.setState({
                         ...this.state,
-                        PuppeteerJobs: filtered
+                        PuppeteerJobs: filtered,
+                        searching: false
                     })
                 }
 
             })
             .catch( err => {
-                console.log( "Error getting jobs using params:" , err )
+                console.log( "Error in SearchUsingParams function-" , err )
             })
 
         
@@ -295,7 +384,7 @@ export default class Jobs extends React.Component {
 
             <div className='Jobs'>
 
-                <nav style = {{ backgroundColor: 'white' }}>
+                <nav>
                     <div className = 'SearchSettings'>
 
                         <form className = 'ParamSection' autoComplete="off" onSubmit = { (e) => this.handleSubmit( e , 'WithAllOfTheseWords' ) }>
@@ -335,7 +424,7 @@ export default class Jobs extends React.Component {
 
                                 <div className = 'AppliedItems'>
                                     { this.state.SearchFor.WithTheExactPhrase.map( (item) =>
-                                        <div className = 'Item'>
+                                        <div className = 'Item' key = { item }>
                                             <p>{item}</p><FeatherIcon icon="x" onClick = { (e) => this.handleDeleteItem( e , 'WithTheExactPhrase' , item )  }/>
                                         </div>
                                     )}
@@ -363,7 +452,7 @@ export default class Jobs extends React.Component {
 
                                 <div className = 'AppliedItems'>
                                     { this.state.SearchFor.WithAtLeastOneOfTheseWords.map( (item) =>
-                                        <div className = 'Item'>
+                                        <div className = 'Item' key = { item }>
                                             <p>{item}</p><FeatherIcon icon="x" onClick = { (e) => this.handleDeleteItem( e , 'WithAtLeastOneOfTheseWords' , item )  }/>
                                         </div>
                                     )}
@@ -391,7 +480,7 @@ export default class Jobs extends React.Component {
 
                                 <div className = 'AppliedItems'>
                                     { this.state.SearchFor.WithNoneOfTheseWords.map( (item) =>
-                                        <div className = 'Item'>
+                                        <div className = 'Item' key = { item }>
                                             <p>{item}</p><FeatherIcon icon="x" onClick = { (e) => this.handleDeleteItem( e , 'WithNoneOfTheseWords' , item )  }/>
                                         </div>
                                     )}
@@ -419,7 +508,7 @@ export default class Jobs extends React.Component {
 
                                 <div className = 'AppliedItems'>
                                     { this.state.SearchFor.WithTheseWordsInTitle.map( (item) =>
-                                        <div className = 'Item'>
+                                        <div className = 'Item' key = { item }>
                                             <p>{item}</p><FeatherIcon icon="x" onClick = { (e) => this.handleDeleteItem( e , 'WithTheseWordsInTitle' , item )  }/>
                                         </div>
                                     )}
@@ -447,7 +536,7 @@ export default class Jobs extends React.Component {
 
                                 <div className = 'AppliedItems'>
                                     { this.state.SearchFor.FromThisCompany.map( (item) =>
-                                        <div className = 'Item'>
+                                        <div className = 'Item' key = { item }>
                                             <p>{item}</p><FeatherIcon icon="x" onClick = { (e) => this.handleDeleteItem( e , 'FromThisCompany' , item )  }/>
                                         </div>
                                     )}
@@ -466,11 +555,69 @@ export default class Jobs extends React.Component {
                             </div>
 
                         </form>
-                    </div>
 
-                    <div className = 'SubmitButtons'>
-                        <button onClick = { ( e ) => this.clearSearchInfo( e ) }>Clear All</button>
-                        <button onClick = { ( e ) => this.SearchUsingParams( e ) }>Submit</button>
+                        <div className = 'BottomSearchSettings'>
+
+                            <form className='ParamSection' autoComplete="off" onSubmit={(e) => this.handleSubmit(e, 'SalaryEstimate')}>
+
+                                <h3>Salary estimate</h3>
+
+                                {this.state.SearchFor.SalaryEstimate ?
+
+                                    <div className='AppliedItems'>
+                                        <p>{this.state.SearchFor.SalaryEstimate}</p><FeatherIcon icon="x" onClick={(e) => this.handleDeleteItem(e, 'SalaryEstimate', 'SalaryEstimate')} />
+                                    </div>
+
+                                    : <p style={{ width: 'fit-content', margin: '0 auto', border: 'none' }} >Not specified</p>}
+
+                                <div className='InputSection'>
+                                    <input
+                                        name="SalaryEstimate"
+                                        placeholder='per year $50,000 or $40K-$90K'
+                                        value={this.state.SearchForInputs.SalaryEstimate}
+                                        onChange={this.changeHandler}
+                                    />
+                                    <button type='submit'><FeatherIcon icon="plus" /></button>
+                                </div>
+
+                            </form>
+
+                            <form className='ParamSection' autoComplete="off" onSubmit={(e) => this.handleSubmit(e, 'Location')}>
+
+                                <h3>Location</h3>
+
+                                {this.state.SearchFor.Location ?
+
+                                    <div className='AppliedItems'>
+                                        <p>{this.state.SearchFor.Location}</p><FeatherIcon icon="x" onClick={(e) => this.handleDeleteItem(e, 'Location', 'Location')} />
+                                    </div>
+
+                                    : <p style={{ width: 'fit-content', margin: '0 auto', border: 'none' }} >Not specified</p>}
+
+                                <div className='InputSection'>
+                                    <input
+                                        name="Location"
+                                        placeholder='Location'
+                                        value={this.state.SearchForInputs.Location}
+                                        onChange={this.changeHandler}
+                                    />
+                                    <button type='submit'><FeatherIcon icon="plus" /></button>
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                        <div className = 'SubmitButtons'>
+                            <button onClick = { ( e ) => this.clearSearchInfo( e ) }>Clear All</button>
+
+                            { this.state.searching === false ? (
+                                <button onClick = { ( e ) => this.SearchUsingParams( e ) }>Submit</button>
+                            ) : (
+                                <FeatherIcon className = 'LoadingSpinner' icon="loader" />
+                            ) }
+                        
+                        </div>
                     </div>
 
                 </nav>
@@ -515,7 +662,7 @@ export default class Jobs extends React.Component {
                                                     <div className='PuppeteerBottom'>
                                                         <p>{x.jobBoard}</p>
                                                         <div className='buttons'>
-                                                            <NavLink exact to='/AddJob' onClick={() => (localStorage.setItem('ApplyingTo', JSON.stringify(x)))}><FeatherIcon icon="plus" /></NavLink>
+                                                            <NavLink exact to='/AddJob' onClick={() => (localStorage.setItem('ApplyingTo', JSON.stringify(x)))}><FeatherIcon icon="clipboard" /></NavLink>
                                                             <button onClick={() => window.open(x.URL)}><FeatherIcon icon="eye" /></button>
                                                         </div>
                                                     </div>

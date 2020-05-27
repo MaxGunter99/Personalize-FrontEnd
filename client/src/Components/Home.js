@@ -45,7 +45,7 @@ class Home extends React.Component {
 
         const InformationContainer = styled.div`
 
-            margin-top: 75vh;
+            margin-top: 70vh;
             display: flex;
             flex-direction: column;
             color: white;

@@ -1,12 +1,9 @@
 .Jobs {
-
-    /* background-color: rgb(255, 255, 255); */
     min-height: 90vh;
     display: flex;
     flex-direction: column;
     background-color: rgb(0, 0, 0);
     padding-bottom: 20px;
-
 }
 
 /* STATUS MESSAGE */
@@ -86,15 +83,7 @@ div.JobContainer {
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-evenly;
-    background-color: rgb(0, 0, 0);
-    padding: 10px;
     border-radius: 10px;
-    /* background: url('https://images.unsplash.com/photo-1476842634003-7dcca8f832de?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'); */
-    /* background: url( 'https://images.unsplash.com/photo-1545612700-748b9ff50b3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80' ); */
-    /* background-image: url('https://images.unsplash.com/photo-1544926485-f079cef40f9d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=869&q=80');
-    background-attachment: fixed;
-    background-position: center;
-    background-size: 100%; */
     border: 2px solid white;
     
 }
@@ -144,8 +133,6 @@ div.JobContainer {
     font-size: 15px;
     justify-content: baseline;
     flex-direction: column;
-    /* margin: 0 auto; */
-    /* margin-bottom: 20px; */
 
 }
 
@@ -173,10 +160,6 @@ div.JobContainer {
     text-decoration: none;
     font-size: 15px;
     height: 50px;
-    /* padding-top: 5px; */
-    /* padding-bottom: 5px; */
-    /* padding-left: 10px; */
-    /* padding-right: 10px; */
     border: 1px solid white;
     width: 25%;
     margin: 0 auto;
@@ -197,10 +180,8 @@ div.JobContainer {
 
     width: 95%;
     margin: 0 auto;
-    /* margin-top: 20px; */
     margin-bottom: 20px;
     background-color: rgb(0, 0, 0);
-    /* border: 2px solid white; */
     padding: 10px;
     color: white;
     display: flex;
@@ -236,17 +217,13 @@ div.JobContainer {
     width: 95%;
     margin: 0 auto;
     display: flex;
-    justify-content: space-evenly;
-    /* border-bottom: 3px solid rgba(255, 255, 255, 0.521); */
-    /* background: url('https://images.pexels.com/photos/2733862/pexels-photo-2733862.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'); */
-    /* background-image: url('https://images.unsplash.com/photo-1580584126903-c17d41830450?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=937&q=80'); */
+    justify-content: space-evenly;    /* background: url('https://images.pexels.com/photos/2733862/pexels-photo-2733862.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'); */
     background-image: url('https://images.unsplash.com/photo-1519705129143-43afdfe43ac7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=935&q=80');
-    /* background-image: url('https://images.unsplash.com/photo-1564073259995-5b3e73577cfa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'); */
+    /* background-image: url('https://images.unsplash.com/photo-1566803739329-908e2b57fc39?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'); */
     background-size: 100%;
     background-attachment: fixed;
     background-position: center;
     padding: 10px;
-    /* border-radius: 10px; */
 
 }
 
@@ -265,29 +242,27 @@ div.JobContainer {
 
     background-color: rgba(0, 0, 0, 0);
     backdrop-filter: blur( 5px );
-    border: 3px solid white;
+    border: 2px solid white;
+    border-radius: 10px;
     padding: 20px;
 
 }
 
 div.rv-xy-plot {
 
-    /* background-color: rgba(255, 255, 255, 0.452); */
     background-color: rgba(0, 0, 0, 0.26);
     backdrop-filter: blur( 5px );
     margin: 0 auto;
     height: 400px;
     padding: 20px;
     border-radius: 10px;
-    /* color: black; */
     color: white;
-    border: 1px solid white;
+    border: 2px solid white;
 
 }
 
 text.rv-xy-plot__axis__tick__text {
 
-    /* fill: rgb(0, 0, 0); */
     fill: white;
     
 }
