@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import '../css/Weather.css';
-import FeatherIcon from 'feather-icons-react';
 import Axios from 'axios';
+import '../css/Weather.css';
 
 export default class Weather extends Component {
 
@@ -80,7 +79,7 @@ export default class Weather extends Component {
 
                         {this.props.weatherSettings.ImageURL === true ?
                             <div>
-                                <img src={this.state.weatherData.ImageURL} style = {{ height: '50px', width: '50px' }} />
+                                <img alt = "WeatherImage" src={this.state.weatherData.ImageURL} style = {{ height: '50px', width: '50px' }} />
                             </div>
                         : null}
 

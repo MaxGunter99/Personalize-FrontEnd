@@ -70,7 +70,7 @@ export default class Jobs extends React.Component {
             .get('http://localhost:3001/jobs')
             .then(res => {
     
-                let sorted = res.data.sort((a, b) => (a.CompanyName > b.CompanyName) ? 1 : -1);
+                let sorted = res.data.sort((a, b) => (a.CompanyName > b.CompanyName ) ? 1 : -1);
     
                 for (var x in res.data) {
                     let cur = sorted[x].CompanyName.toLowerCase();
@@ -90,11 +90,10 @@ export default class Jobs extends React.Component {
                         bank
                     });
 
-                    console.log( 'SearchUsingParams' )
                     return this.SearchUsingParams()
 
                 } else {
-                    console.log( 'loadingSuggestions' )
+
                     return this.loadSuggestions(bank);
 
                 }
@@ -165,8 +164,6 @@ export default class Jobs extends React.Component {
 
         event.preventDefault();
 
-        console.log( event.target.name )
-
         if ( string === 'SalaryEstimate' ) {
 
             this.setState({
@@ -198,13 +195,12 @@ export default class Jobs extends React.Component {
         } else {
 
             let dictionary = {};
+
             for ( var x of this.state.SearchFor[ string ] ) {
                 dictionary[ x ] = x
             };
     
-            if ( this.state.SearchForInputs[ string ] in dictionary || this.state.SearchForInputs[ string ] === '' ) {
-                console.log( 'its already in' )
-            } else {
+            if ( !this.state.SearchForInputs[ string ] in dictionary || !this.state.SearchForInputs[ string ] === '' ) {
                 this.state.SearchFor[ string ].push( this.state.SearchForInputs[ string ] )
             };
     
@@ -324,7 +320,7 @@ export default class Jobs extends React.Component {
                 if ( typeof( current ) === 'string' ) {
                     body[ SearchItem ] = current
                 } else {
-                    body[ SearchItem ] = String( current.join( ',' ) )
+                    body[ SearchItem ] = String( current.join( ' ' ) )
                 }
             }
         }
@@ -337,8 +333,6 @@ export default class Jobs extends React.Component {
             PuppeteerJobs: [],
             searching: true
         });
-
-        console.log( 'Sending:' , body )
 
         Axios
             .post( 'http://localhost:3001/puppeteer' , body )
@@ -353,8 +347,6 @@ export default class Jobs extends React.Component {
                         };
                     };
                 };
-
-                console.log( this.state.PuppeteerJobs )
 
                 if ( filtered.length === 0 ) {
                     this.setState({
@@ -395,7 +387,7 @@ export default class Jobs extends React.Component {
 
                                 <div className = 'AppliedItems'>
                                     { this.state.SearchFor.WithAllOfTheseWords.map( (item) =>
-                                        <div className = 'Item'>
+                                        <div className = 'Item' key = { item }>
                                             <p>{item}</p><FeatherIcon icon="x" onClick = { (e) => this.handleDeleteItem( e , 'WithAllOfTheseWords' , item )  }/>
                                         </div>
                                     )}
@@ -604,20 +596,22 @@ export default class Jobs extends React.Component {
                                     <button type='submit'><FeatherIcon icon="plus" /></button>
                                 </div>
 
+
                             </form>
 
+                            <div className = 'SubmitButtons'>
+                                <button onClick = { ( e ) => this.clearSearchInfo( e ) }>Clear All</button>
+
+                                { this.state.searching === false ? (
+                                    <button onClick = { ( e ) => this.SearchUsingParams( e ) }>Submit</button>
+                                ) : (
+                                    <FeatherIcon className = 'LoadingSpinner' icon="loader" />
+                                ) }
+                                
+                            </div>
+
                         </div>
 
-                        <div className = 'SubmitButtons'>
-                            <button onClick = { ( e ) => this.clearSearchInfo( e ) }>Clear All</button>
-
-                            { this.state.searching === false ? (
-                                <button onClick = { ( e ) => this.SearchUsingParams( e ) }>Submit</button>
-                            ) : (
-                                <FeatherIcon className = 'LoadingSpinner' icon="loader" />
-                            ) }
-                        
-                        </div>
                     </div>
 
                 </nav>
@@ -650,7 +644,7 @@ export default class Jobs extends React.Component {
                                                 x.company.toLowerCase() === 'revature' ||
                                                 x.title.toLowerCase().includes('senior') ? null :
 
-                                                <div key={x.company} className='PuppeteerJob'>
+                                                <div key={x.title} className='PuppeteerJob'>
 
                                                     <div>
                                                         <h2><strong>{x.title}</strong></h2>

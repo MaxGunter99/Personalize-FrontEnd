@@ -113,8 +113,6 @@ export default class Stats extends React.Component {
 
         let xyGraph = []
 
-        console.log( thisWeekDates )
-
         // Populates graph data with jobs applied this week
         for (var q = 0; q < thisWeekDates.length; q++ ) {
 
@@ -132,8 +130,6 @@ export default class Stats extends React.Component {
 
             xyGraph.push( { x : q , y : count } )
         }
-
-        console.log( xyGraph )
 
         this.props.handleJobs( todaysJobs , 'Day' )
         this.props.handleJobs( thisWeeksJobs , 'Week' )
