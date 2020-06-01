@@ -194,13 +194,13 @@ export default class Jobs extends React.Component {
 
         } else {
 
-            let dictionary = {};
+            const dictionary = {};
 
             for ( var x of this.state.SearchFor[ string ] ) {
                 dictionary[ x ] = x
             };
     
-            if ( !this.state.SearchForInputs[ string ] in dictionary || !this.state.SearchForInputs[ string ] === '' ) {
+            if ( this.state.SearchForInputs[ string ] in dictionary === false || this.state.SearchForInputs[ string ]!== '' ) {
                 this.state.SearchFor[ string ].push( this.state.SearchForInputs[ string ] )
             };
     
@@ -211,7 +211,8 @@ export default class Jobs extends React.Component {
                     [string]: ''
                 }
             });
-        }
+
+        };
 
         setTimeout( () => { return this.saveSearch() }, 1 )
     }
@@ -616,7 +617,7 @@ export default class Jobs extends React.Component {
 
                 </nav>
 
-                <h1 style = {{ width: '100%' , display: 'flex', justifyContent: 'center' }}>Indeed Suggestions</h1>
+                <h1 style = {{ width: '100%' , display: 'flex', justifyContent: 'center' }}> {this.state.PuppeteerJobs.length} Indeed Suggestions</h1>
 
                 { this.state.PuppeteerJobs.length > 0 ? (
 
