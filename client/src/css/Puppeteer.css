@@ -373,3 +373,34 @@ h1 {
     cursor: pointer;
     background-color: white;
 }
+
+@media only screen and ( max-width: 1000px ) {
+
+    .SearchSettings {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .SearchSettings form {
+        width: 45%;
+    }
+
+    .BottomSearchSettings {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 95%;
+    }
+
+    .BottomSearchSettings form {
+        width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .SubmitButtons {
+        width: 100%;
+        justify-content: center;
+    }
+
+}

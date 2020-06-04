@@ -126,3 +126,10 @@
     transition: .3s;
     cursor: pointer;
 }
+
+@media only screen and ( max-width: 1000px ) {
+    .BottomButtons {
+        width: 100%;
+        border-radius: 0px;
+    }
+}

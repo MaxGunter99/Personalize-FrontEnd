@@ -637,33 +637,23 @@ export default class Jobs extends React.Component {
                             ) : (
                                 <>
                                     {this.state.PuppeteerJobs.map((x) =>
-                                        <>
-                                            {x.title.toLowerCase().includes('php') ||
-                                                x.title.toLowerCase().includes('.net') ||
-                                                x.title.toLowerCase().includes('lead') ||
-                                                x.title.toLowerCase().includes('angular') ||
-                                                x.company.toLowerCase() === 'revature' ||
-                                                x.title.toLowerCase().includes('senior') ? null :
+                                        <div key={x.title} className='PuppeteerJob'>
 
-                                                <div key={x.title} className='PuppeteerJob'>
+                                            <div>
+                                                <h2><strong>{x.title}</strong></h2>
+                                                <h5>{x.company}  ➡︎  {x.location}</h5>
+                                            </div>
 
-                                                    <div>
-                                                        <h2><strong>{x.title}</strong></h2>
-                                                        <h5>{x.company}  ➡︎  {x.location}</h5>
-                                                    </div>
+                                            <p>{x.description}</p>
 
-                                                    <p>{x.description}</p>
-
-                                                    <div className='PuppeteerBottom'>
-                                                        <p>{x.jobBoard}</p>
-                                                        <div className='buttons'>
-                                                            <NavLink exact to='/AddJob' onClick={() => (localStorage.setItem('ApplyingTo', JSON.stringify(x)))}><FeatherIcon icon="clipboard" /></NavLink>
-                                                            <button onClick={() => window.open(x.URL)}><FeatherIcon icon="eye" /></button>
-                                                        </div>
-                                                    </div>
+                                            <div className='PuppeteerBottom'>
+                                                <p>{x.jobBoard}</p>
+                                                <div className='buttons'>
+                                                    <NavLink exact to='/AddJob' onClick={() => (localStorage.setItem('ApplyingTo', JSON.stringify(x)))}><FeatherIcon icon="clipboard" /></NavLink>
+                                                    <button onClick={() => window.open(x.URL)}><FeatherIcon icon="eye" /></button>
                                                 </div>
-                                            }
-                                        </>
+                                            </div>
+                                        </div>
                                     )}
                                 </>
                             )}

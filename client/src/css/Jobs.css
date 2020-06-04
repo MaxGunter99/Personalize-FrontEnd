@@ -288,3 +288,39 @@ text.rv-xy-plot__axis__tick__text {
     cursor: pointer;
 
 }
+
+@media only screen and ( max-width: 1000px ) {
+
+    .Stats {
+
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .Stats div {
+        width: 100%;
+        flex-direction: row;
+    }
+
+    .Stats div p {
+        width: 40%;
+    }
+
+    div.JobContainer {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    div.JobContainer div {
+        width: 90%;
+        margin: 0 auto;
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+    }
+
+}

@@ -123,3 +123,16 @@ form div a:hover {
     cursor: pointer;
 
 }
+
+@media only screen and ( max-width: 1000px ) {
+
+    .section {
+        flex-direction: column;
+        /* width: 50%; */
+    }
+
+    .AddJobForm form .section .pair {
+        width: 100%;
+    }
+
+}
